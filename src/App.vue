@@ -1,15 +1,17 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <!--<img alt="Vue logo" src="./assets/logo.png">-->
+  <!--<HelloWorld msg="Welcome to Your Vue.js App"/>-->
+  <ProfileActionPresenter/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+//import HelloWorld from './views/HelloWorld.vue'
+import ProfileActionPresenter from './presenters/ProfileActionPresenter.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    ProfileActionPresenter
   }
 }
 </script>
