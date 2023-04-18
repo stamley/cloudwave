@@ -2,7 +2,6 @@
     <ProfileboxView/>
     <SoundsView/>
     <ModifySoundsView/>
-    <div></div>
 </template>
 <script>
 
