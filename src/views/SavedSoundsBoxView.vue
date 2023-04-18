@@ -11,11 +11,10 @@
 <script>
 export default{
     name: "SavedSoundsBoxView",
-    //props: {
-     //   sounds: Array,    
-   // },
+    
     data(){
-        return {sounds: ["'Piano' created 2023-03","'Guitar' created 2023-04","'Flute' created 2023-05", "'Drums' created 2023-06","'SawtoothSynth' created 2023-07","'SinewaveSynth' created 2023-08"]};
+        return {
+            sounds: ["'Piano' created 2023-03","'Guitar' created 2023-04","'Flute' created 2023-05", "'Drums' created 2023-06","'SawtoothSynth' created 2023-07","'SinewaveSynth' created 2023-08"]};
     }
 }
 </script>
