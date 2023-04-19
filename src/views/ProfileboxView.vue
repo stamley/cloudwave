@@ -7,8 +7,10 @@
         width="100"
         height="100"
       />
-      <h2>Welcome {{ profile.username }}</h2>
-      <p><strong>Email:</strong> {{ profile.email }}</p>
+      <div class="welcome">
+        <h2>Welcome {{ profile.username }}</h2>
+        <div class="email"><strong>Email:</strong> {{ profile.email }}</div>
+      </div>
     </div>
     <div class="profile-actions">
       <button @click="showChangeUsernameForm">Change Username</button>
@@ -69,6 +71,10 @@ export default {
 .profile-box {
   display: flex;
   align-items: center;
+  justify-content: center;
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 20px;
 }
 
 .profile-details {
@@ -78,12 +84,22 @@ export default {
 
 .profile-details img {
   margin-right: 16px;
+  border-radius: 50px;
 }
 
 .profile-actions {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+}
+
+.welcome {
+  display: flex;
+  flex-direction: column;
+}
+
+.email {
+  margin-top: 3px;
 }
 
 input {
