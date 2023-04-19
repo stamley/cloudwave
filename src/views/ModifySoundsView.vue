@@ -18,7 +18,7 @@ export default {
   data() {
     return {
       selectedMusic: "",
-      musicOptions: ["Pop", "Rock", "Jazz", "Classical"],
+      musicOptions: ["Piano", "Guitar", "Flute", "Classical"],
     };
   },
   methods: {
