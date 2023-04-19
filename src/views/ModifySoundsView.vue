@@ -18,7 +18,15 @@ export default {
   data() {
     return {
       selectedMusic: "",
-      musicOptions: ["Piano", "Guitar", "Flute", "Classical"],
+      musicOptions: [
+        "Piano",
+        "Guitar",
+        "Flute",
+        "Drums",
+        "SawtoothSynth",
+        "Violin",
+        "SinewaveSynth",
+      ],
     };
   },
   methods: {
