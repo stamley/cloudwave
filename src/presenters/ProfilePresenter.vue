@@ -20,3 +20,9 @@ export default {
   components: { ProfileboxView, SoundsView, ModifySoundsView },
 };
 </script>
+<style>
+body {
+  background-image: url("https://img.freepik.com/premium-photo/abstract-music-background_476363-6545.jpg?w=2000");
+  background-size: 100%;
+}
+</style>

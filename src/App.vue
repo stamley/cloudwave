@@ -13,7 +13,7 @@ import ProfilePresenter from "./presenters/ProfilePresenter.vue";
 export default {
   name: "App",
   components: {
-    // ProfileActionPresenter,
+    //ProfileActionPresenter,
     ProfilePresenter,
   },
 };

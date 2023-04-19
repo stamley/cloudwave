@@ -72,9 +72,11 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid black;
+  border: 3px solid whitesmoke;
   border-radius: 20px;
   padding: 20px;
+  margin: 50px auto;
+  max-inline-size: 700px;
 }
 
 .profile-details {
