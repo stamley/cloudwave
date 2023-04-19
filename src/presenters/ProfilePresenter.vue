@@ -2,6 +2,7 @@
   <ProfileboxView />
   <SoundsView />
   <ModifySoundsView />
+  <EqualizerView />
 </template>
 <script>
 /*
@@ -14,10 +15,11 @@
 import ModifySoundsView from "@/views/ModifySoundsView.vue";
 import ProfileboxView from "@/views/ProfileboxView.vue";
 import SoundsView from "@/views/SoundsView.vue";
+import EqualizerView from "@/views/EqualizerView.vue";
 
 export default {
   name: "ProfilePresenter",
-  components: { ProfileboxView, SoundsView, ModifySoundsView },
+  components: { ProfileboxView, SoundsView, ModifySoundsView, EqualizerView },
 };
 </script>
 <style>

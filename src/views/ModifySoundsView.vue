@@ -1,6 +1,6 @@
 <template>
   <div class="profile-box">
-    <label for="music-select">Select a Music:</label>
+    <label for="music-select" class="selecMusic">Select a Music:</label>
     <select v-model="selectedMusic" @change="selectedType">
       <option
         v-for="(music, index) in musicOptions"
@@ -50,5 +50,8 @@ export default {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat; */
+}
+.selecMusic {
+  color: black;
 }
 </style>
