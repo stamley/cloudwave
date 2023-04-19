@@ -1,6 +1,12 @@
 <template>
   <div class="profile-box">
     <div class="profile-details">
+      <img
+        src="https://ichef.bbci.co.uk/news/999/cpsprodpb/15951/production/_117310488_16.jpg"
+        alt="Profile picture"
+        width="100"
+        height="100"
+      />
       <h2>Welcome {{ profile.username }}</h2>
       <p><strong>Email:</strong> {{ profile.email }}</p>
     </div>
@@ -24,8 +30,8 @@ export default {
   data() {
     return {
       profile: {
-        username: "John",
-        email: "john@gmail.com",
+        username: "Ismail",
+        email: "ismail@gmail.com",
       },
       newUsername: "",
       showChangeUsername: false,
@@ -38,9 +44,7 @@ export default {
     changeUsername() {
       if (this.newUsername) {
         this.profile.username = this.newUsername;
-
         this.newUsername = "";
-
         console.log("Username changed successfully!");
         this.showChangeUsername = false;
       } else {
@@ -68,7 +72,12 @@ export default {
 }
 
 .profile-details {
-  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
+.profile-details img {
+  margin-right: 16px;
 }
 
 .profile-actions {
