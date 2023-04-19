@@ -6,6 +6,10 @@
             </div>
         </div>
     </div>
+    <div>
+        <button>Remove</button>
+        <button>Modify</button>
+    </div>
 </template>
 
 <script>
