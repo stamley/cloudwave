@@ -1,6 +1,6 @@
 <template>
-  <LoginView />
-  <CreateAccountView />
+  <LoginView v-if="!notLoggedIn"/>
+  <CreateAccountView v-if="notLoggedIn"/>
 </template>
 <script>
 /* 
@@ -15,5 +15,8 @@ import LoginView from "@/views/LoginView.vue";
 export default {
   name: "ProfileActionPresenter",
   components: { CreateAccountView, LoginView },
+  data(){
+    return { notLoggedIn: true}
+  }
 };
 </script>
