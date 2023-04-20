@@ -1,8 +1,9 @@
 <template>
-  <ProfileboxView />
-  <SoundsView />
-  <ModifySoundsView />
-  <EqualizerView />
+    <ProfileboxView/>
+    <SoundsView/>
+    <ModifySoundsView/>
+    <EqualizerView />
+    <TopButtonsView/>
 </template>
 <script>
 /*
@@ -16,10 +17,11 @@ import ModifySoundsView from "@/views/ModifySoundsView.vue";
 import ProfileboxView from "@/views/ProfileboxView.vue";
 import SoundsView from "@/views/SoundsView.vue";
 import EqualizerView from "@/views/EqualizerView.vue";
+import TopButtonsView from "@/views/TopButtonsView.vue";
 
 export default {
   name: "ProfilePresenter",
-  components: { ProfileboxView, SoundsView, ModifySoundsView, EqualizerView },
+  components: { ProfileboxView, SoundsView, ModifySoundsView, EqualizerView, TopButtonsView },
 };
 </script>
 <style>
