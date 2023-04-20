@@ -1,10 +1,10 @@
 <template>
-    <ProfileboxView/>
-    <SoundsView/>
-    <ModifySoundsView/>
+  <ProfileboxView />
+  <SoundsView />
+  <ModifySoundsView />
+  <EqualizerView />
 </template>
 <script>
-
 /*
     This presenter shows data regarding the active profile and
     the sounds of the users.
@@ -12,12 +12,19 @@
     sound used for the synth.
 */
 
-import ModifySoundsView from '@/views/ModifySoundsView.vue';
-import ProfileboxView from '@/views/ProfileboxView.vue';
-import SoundsView from '@/views/SoundsView.vue';
+import ModifySoundsView from "@/views/ModifySoundsView.vue";
+import ProfileboxView from "@/views/ProfileboxView.vue";
+import SoundsView from "@/views/SoundsView.vue";
+import EqualizerView from "@/views/EqualizerView.vue";
 
-export default{
-    name: "LoginPresenter",
-    components: { ProfileboxView, SoundsView, ModifySoundsView },
-}
+export default {
+  name: "ProfilePresenter",
+  components: { ProfileboxView, SoundsView, ModifySoundsView, EqualizerView },
+};
 </script>
+<style>
+body {
+  background-image: url("https://img.freepik.com/premium-photo/abstract-music-background_476363-6545.jpg?w=2000");
+  background-size: 100%;
+}
+</style>

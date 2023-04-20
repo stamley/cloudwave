@@ -1,19 +1,22 @@
 <template>
   <!--<img alt="Vue logo" src="./assets/logo.png">-->
   <!--<HelloWorld msg="Welcome to Your Vue.js App"/>-->
-  <ProfileActionPresenter/>
+  <ProfileActionPresenter />
+  <ProfilePresenter />
 </template>
 
 <script>
 //import HelloWorld from './views/HelloWorld.vue'
-import ProfileActionPresenter from './presenters/ProfileActionPresenter.vue';
+//import ProfileActionPresenter from "./presenters/ProfileActionPresenter.vue";
+import ProfilePresenter from "./presenters/ProfilePresenter.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    ProfileActionPresenter
-  }
-}
+    //ProfileActionPresenter,
+    ProfilePresenter,
+  },
+};
 </script>
 
 <style>
