@@ -10,11 +10,10 @@
 */
 
 import CreateAccountView from "@/views/CreateAccountView.vue";
-// import LoginView from "@/views/LoginView.vue";
+import LoginView from "@/views/LoginView.vue";
 
 export default {
   name: "ProfileActionPresenter",
-  // components: { CreateAccountView, LoginView },
-  components: { CreateAccountView },
+  components: { CreateAccountView, LoginView },
 };
 </script>
