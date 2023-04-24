@@ -8,8 +8,11 @@
         height="100"
       />
       <div class="welcome">
-        <h2>Welcome {{ profile.username }}</h2>
-        <div class="email"><strong>Email:</strong> {{ profile.email }}</div>
+        <h2 v-if="user">Welcome {{ user.displayName }}</h2>
+        <h2 v-else>Welcome!</h2>
+        <div class="email" v-if="user">
+          <strong>Email:</strong> {{ user.email }}
+        </div>
       </div>
     </div>
     <div class="profile-actions">
@@ -27,42 +30,73 @@
 </template>
 
 <script>
+import { ref, onMounted } from "vue";
+import { auth } from "../firebaseModel";
+
 export default {
   name: "ProfileboxView",
-  data() {
-    return {
-      profile: {
-        username: "Ismail",
-        email: "ismail@gmail.com",
-      },
-      newUsername: "",
-      showChangeUsername: false,
+  setup() {
+    const user = ref(null);
+    const showChangeUsername = ref(false);
+    const newUsername = ref("");
+
+    onMounted(() => {
+      auth.onAuthStateChanged((currentUser) => {
+        user.value = currentUser;
+      });
+    });
+
+    const showChangeUsernameForm = () => {
+      showChangeUsername.value = true;
     };
-  },
-  methods: {
-    showChangeUsernameForm() {
-      this.showChangeUsername = true;
-    },
-    changeUsername() {
-      if (this.newUsername) {
-        this.profile.username = this.newUsername;
-        this.newUsername = "";
-        console.log("Username changed successfully!");
-        this.showChangeUsername = false;
+
+    const changeUsername = () => {
+      if (newUsername.value) {
+        user.value
+          .updateProfile({
+            displayName: newUsername.value,
+          })
+          .then(() => {
+            console.log("Username changed successfully!");
+            newUsername.value = "";
+            showChangeUsername.value = false;
+          })
+          .catch((error) => {
+            console.error(error);
+          });
       } else {
         console.error("New username is required!");
       }
-    },
-    deleteAccount() {
+    };
+
+    const deleteAccount = () => {
       if (confirm("Are you sure you want to delete your account?")) {
-        console.log("Account deleted successfully!");
+        user.value
+          .delete()
+          .then(() => {
+            console.log("Account deleted successfully!");
+          })
+          .catch((error) => {
+            console.error(error);
+          });
       } else {
         console.log("Account deletion cancelled!");
       }
-    },
-    saveMusic() {
+    };
+
+    const saveMusic = () => {
       console.log("Music saved successfully!");
-    },
+    };
+
+    return {
+      user,
+      showChangeUsername,
+      newUsername,
+      showChangeUsernameForm,
+      changeUsername,
+      deleteAccount,
+      saveMusic,
+    };
   },
 };
 </script>

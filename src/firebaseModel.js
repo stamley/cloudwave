@@ -1,26 +1,62 @@
-/*import firebaseConfig from "./firebaseConfig";
-import firebase from "firebase/app";
- "firebase/firestore";
-
-firebase.initializeApp(firebaseConfig);
-
-var database = firebase.database();
-const REF = "CloudWave/";
-*/
 import firebaseConfig from "./firebaseConfig";
-import { initializeApp } from "../node_modules/@firebase/app";
-import {set, ref, getDatabase} from "../node_modules/@firebase/database";
+import { initializeApp } from "firebase/app";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { set, ref, getDatabase } from "firebase/database";
 
 const app = initializeApp(firebaseConfig);
 
 const REF = "CloudWave/";
 
 const db = getDatabase(app);
+const auth = getAuth(app);
 
-function save(){
-    var testvalue = document.getElementById("name").value;
-    set(ref(db, REF + 'test/' + testvalue), testvalue );
-    alert("Saved");
+function save() {
+  const name = document.getElementById("name").value;
+  const email = document.querySelector(".mailBox").value;
+  const password = document.querySelector(".passBox").value;
+  const confirm = document.querySelector(".ConpassBox").value;
+
+  if (password !== confirm) {
+    alert("Passwords do not match.");
+    return;
+  }
+
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      alert("Successfully signed up!");
+
+      set(ref(db, REF + "users/" + user.uid), {
+        name: name,
+      });
+    })
+    .catch((error) => {
+      alert(error.message);
+    });
 }
 
-export { save };
+function login() {
+  const email = document.querySelector(".mailBox").value;
+  const password = document.querySelector(".passBox").value;
+
+  signInWithEmailAndPassword(auth, email, password)
+    .then(() => {
+      alert("Successfully signed in!");
+    })
+    .catch((error) => {
+      alert(error.message);
+    });
+}
+
+export {
+  save,
+  auth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  getAuth,
+  login,
+};

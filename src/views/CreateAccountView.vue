@@ -1,41 +1,89 @@
-@@ -1,5 +1,126 @@
 <template>
-  <div></div>
   <div class="container">
-    <h1 class="title">Sign UP</h1>
+    <h1 class="title">Sign Up</h1>
     <div class="signInBox">
       <p class="signInText">Fill in your details below</p>
 
-      <input type="text" placeholder="Full Name" class="nameBox" id="name"/>
-      <input type="email" placeholder="Email" required class="mailBox" />
-      <input type="password" placeholder="Password" class="passBox" />
+      <input
+        type="text"
+        placeholder="Full Name"
+        class="nameBox"
+        v-model="fullName"
+      />
+      <input
+        type="email"
+        placeholder="Email"
+        required
+        class="mailBox"
+        v-model="email"
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        class="passBox"
+        v-model="password"
+      />
       <input
         type="password"
         placeholder="Confirm password"
         class="ConpassBox"
+        v-model="confirmPassword"
       />
 
-      <button class="register" @click="save">Register</button>
+      <button class="register" @click="registerUser">Register</button>
       <footer>
         Already registered? Log in
-        <a href="#">Here</a>
+        <router-link to="/login">Here</router-link>
       </footer>
     </div>
   </div>
 </template>
-
 <script>
-
-import { save } from '@/firebaseModel';
+import { ref } from "vue";
+import { auth, createUserWithEmailAndPassword } from "../firebaseModel";
+import { useRouter } from "vue-router";
 
 export default {
-  data (){
-    return { save };
-  }
+  name: "CreateAccountView",
+  setup() {
+    const router = useRouter();
+    const fullName = ref("");
+    const email = ref("");
+    const password = ref("");
+    const confirmPassword = ref("");
 
-}
+    const registerUser = async () => {
+      if (password.value !== confirmPassword.value) {
+        alert("Passwords do not match");
+        return;
+      }
+      try {
+        const userCredential = await createUserWithEmailAndPassword(
+          auth,
+          email.value,
+          password.value
+        );
+        const user = userCredential.user;
+        if (user && user.updateProfile) {
+          await user.updateProfile({
+            displayName: fullName.value,
+          });
+        }
+        router.push("/profile");
+      } catch (error) {
+        alert(error.message);
+      }
+    };
 
-
+    return {
+      fullName,
+      email,
+      password,
+      confirmPassword,
+      registerUser,
+    };
+  },
+};
 </script>
 
 <style scoped>
