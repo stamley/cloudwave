@@ -24,7 +24,8 @@ export default {
 </script>
 <style>
 body {
-  background-image: url("https://img.freepik.com/premium-photo/abstract-music-background_476363-6545.jpg?w=2000");
+  /* background-image: url("https://img.freepik.com/premium-photo/abstract-music-background_476363-6545.jpg?w=2000"); */
   background-size: 100%;
+  background-image: url("https://hotpotmedia.s3.us-east-2.amazonaws.com/8-xT9xypBeZh00cRt.png?nc=1");
 }
 </style>
