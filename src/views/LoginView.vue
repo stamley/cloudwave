@@ -50,6 +50,7 @@ export default {
     const loginUser = async () => {
       try {
         await signInWithEmailAndPassword(auth, email.value, password.value);
+        console.log("User logged in succesfully");
         router.push("/profile");
       } catch (error) {
         alert(error.message);
