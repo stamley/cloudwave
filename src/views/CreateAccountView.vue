@@ -11,8 +11,13 @@
       <input type="password" placeholder="Password" class="passBox" />
       <input
         type="password"
-        placeholder="Confirm password"
+        placeholder="Confirm your password"
         class="ConpassBox"
+      />
+      <input
+        type="Synth password"
+        placeholder="Synth Password"
+        class="SyPassBox"
       />
 
       <button class="register">Register</button>
@@ -46,7 +51,6 @@
 
 .signInBox {
   width: 50%;
-  length: 50%;
   margin-right: auto;
   margin-left: auto;
   grid-area: signInBox;
@@ -108,6 +112,16 @@
   margin-right: auto;
   margin-left: auto;
   margin-top: 65px;
+  margin-bottom: 10px;
+}
+
+.SyPassBox {
+  width: 50%;
+  height: 30px;
+  grid-area: passBox;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 120px;
   margin-bottom: 10px;
 }
 
