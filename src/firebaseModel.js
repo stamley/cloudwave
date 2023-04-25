@@ -14,6 +14,15 @@ const REF = "CloudWave/";
 const db = getDatabase(app);
 const auth = getAuth(app);
 
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    set(ref(db, REF + "users/" + user.uid), {
+      name: user.displayName,
+      email: user.email,
+    });
+  }
+});
+
 function save() {
   const name = document.getElementById("name").value;
   const email = document.querySelector(".mailBox").value;

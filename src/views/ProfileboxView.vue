@@ -17,8 +17,9 @@
     </div>
     <div class="profile-actions">
       <button @click="showChangeUsernameForm">Change Username</button>
-      <button @click="deleteAccount">Delete Account</button>
+      <!-- <button @click="deleteAccount">Delete Account</button> -->
       <button @click="saveMusic">Save Music</button>
+      <button @click="logout">Logout</button>
     </div>
     <div v-if="showChangeUsername">
       <form @submit.prevent="changeUsername">
@@ -32,10 +33,12 @@
 <script>
 import { ref, onMounted } from "vue";
 import { auth } from "../firebaseModel";
+import { useRouter } from "vue-router";
 
 export default {
   name: "ProfileboxView",
   setup() {
+    const router = useRouter();
     const user = ref(null);
     const showChangeUsername = ref(false);
     const newUsername = ref("");
@@ -69,23 +72,34 @@ export default {
       }
     };
 
-    const deleteAccount = () => {
-      if (confirm("Are you sure you want to delete your account?")) {
-        user.value
-          .delete()
-          .then(() => {
-            console.log("Account deleted successfully!");
-          })
-          .catch((error) => {
-            console.error(error);
-          });
-      } else {
-        console.log("Account deletion cancelled!");
-      }
-    };
+    // const deleteAccount = () => {
+    //   if (confirm("Are you sure you want to delete your account?")) {
+    //     user.value
+    //       .delete()
+    //       .then(() => {
+    //         console.log("Account deleted successfully!");
+    //       })
+    //       .catch((error) => {
+    //         console.error(error);
+    //       });
+    //   } else {
+    //     console.log("Account deletion cancelled!");
+    //   }
+    // };
 
     const saveMusic = () => {
       console.log("Music saved successfully!");
+    };
+    const logout = () => {
+      auth
+        .signOut()
+        .then(() => {
+          console.log("Logged out successfully!");
+          router.push("/login");
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     };
 
     return {
@@ -94,8 +108,9 @@ export default {
       newUsername,
       showChangeUsernameForm,
       changeUsername,
-      deleteAccount,
+      // deleteAccount,
       saveMusic,
+      logout,
     };
   },
 };
