@@ -3,11 +3,17 @@
     <h1 class="title">Login</h1>
     <div class="signInBox">
       <p class="signInText">Enter your account details below</p>
-      <input type="email" placeholder="bob@gmail.com" class="mailBox" />
-      <input type="password" placeholder="*******" class="passBox" />
+      <input type="email" placeholder="Email" class="mailBox" v-model="email" />
+      <input
+        type="password"
+        placeholder="Password"
+        class="passBox"
+        v-model="password"
+      />
+      <button class="login" @click="loginUser">Login</button>
       <button class="resPass">Reset password</button>
       <button class="resUsern">Reset username</button>
-      <button class="register">Register</button>
+      <button class="register" @click="registerUser">Register</button>
     </div>
     <img
       src="https://i.gifer.com/origin/0d/0d6cf5b4980702758a616a14bed86e3a_w200.gif"
@@ -28,7 +34,37 @@
     </div>
   </div>
 </template>
-<script></script>
+
+<script>
+import { ref } from "vue";
+import { auth, signInWithEmailAndPassword } from "../firebaseModel";
+import { useRouter } from "vue-router";
+
+export default {
+  name: "LoginView",
+  setup() {
+    const router = useRouter();
+    const email = ref("");
+    const password = ref("");
+
+    const loginUser = async () => {
+      try {
+        await signInWithEmailAndPassword(auth, email.value, password.value);
+        console.log("User logged in succesfully");
+        router.push("/profile");
+      } catch (error) {
+        alert(error.message);
+      }
+    };
+
+    return {
+      email,
+      password,
+      loginUser,
+    };
+  },
+};
+</script>
 
 <style scoped>
 .container {

@@ -52,6 +52,6 @@ export default {
   background-repeat: no-repeat; */
 }
 .selecMusic {
-  color: black;
+  color: white;
 }
 </style>
