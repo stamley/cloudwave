@@ -55,7 +55,7 @@ export default {
 
     const changeUsername = () => {
       if (newUsername.value) {
-        user.value
+        auth.currentUser
           .updateProfile({
             displayName: newUsername.value,
           })
@@ -71,7 +71,6 @@ export default {
         console.error("New username is required!");
       }
     };
-
     // const deleteAccount = () => {
     //   if (confirm("Are you sure you want to delete your account?")) {
     //     user.value
