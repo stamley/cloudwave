@@ -1,11 +1,11 @@
 <template>
-    <TopButtonsView/>
-    <ProfileboxView/>
-    <SoundsView/>
-    <SavedSoundsBoxView/>
-    <ModifySoundsView/>
-    <EqualizerView />
-    
+  <TopButtonsView />
+  <ProfileboxView />
+  <SoundsView />
+  <SavedSoundsBoxView />
+  <ModifySoundsView />
+  <EqualizerView />
+  <FooterView />
 </template>
 <script>
 /*
@@ -20,17 +20,26 @@ import ProfileboxView from "@/views/ProfileboxView.vue";
 import SoundsView from "@/views/SoundsView.vue";
 import EqualizerView from "@/views/EqualizerView.vue";
 import TopButtonsView from "@/views/TopButtonsView.vue";
-import SavedSoundsBoxView from "@/views/SavedSoundsBoxView.vue"
+import SavedSoundsBoxView from "@/views/SavedSoundsBoxView.vue";
+import FooterView from "@/views/FooterView.vue";
 
 export default {
   name: "ProfilePresenter",
-  components: { ProfileboxView, SoundsView, ModifySoundsView, EqualizerView, TopButtonsView, SavedSoundsBoxView },
+  components: {
+    ProfileboxView,
+    SoundsView,
+    ModifySoundsView,
+    EqualizerView,
+    TopButtonsView,
+    SavedSoundsBoxView,
+    FooterView,
+  },
 };
 </script>
 <style>
 body {
   /* background-image: url("https://img.freepik.com/premium-photo/abstract-music-background_476363-6545.jpg?w=2000"); */
   background-size: 100%;
-  background-color: rgb(27, 27, 27);;
+  background-color: rgb(27, 27, 27);
 }
 </style>

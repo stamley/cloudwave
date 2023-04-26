@@ -38,7 +38,6 @@ function save() {
     .then((userCredential) => {
       const user = userCredential.user;
       alert("Successfully signed up!");
-
       set(ref(db, REF + "users/" + user.uid), {
         name: name,
       });
