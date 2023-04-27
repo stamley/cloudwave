@@ -28,11 +28,14 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 3px solid whitesmoke;
-  border-radius: 20px;
+  /*border: 3px solid whitesmoke;*/
+  background-color: rgb(178, 197, 237);
+
+  border-radius: 6px;
   padding: 50px;
   margin: 10px auto;
   max-inline-size: 625px;
+  font-family: "Sporting", Helvetica;
 }
 
 .slider {
@@ -45,26 +48,26 @@ export default {
 .slider input[type="range"] {
   -webkit-appearance: none;
   width: 100px;
-  height: 5px;
-  background: #eee;
+  height: 1px;
+  background: rgb(55, 96, 211);
   outline: none;
   border-radius: 5px;
-  margin: 10px 0;
+  margin: 10px -10px;
   transform: rotate(-90deg);
 }
 
 .slider input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 20px;
-  height: 20px;
-  background: #2196f3;
-  border-radius: 50%;
+  width: 10px;
+  height: 15px;
+  background: rgb(55, 96, 211);
+  border-radius: 16%;
   cursor: pointer;
 }
 
 .slider-value {
   font-size: 14px;
   margin-top: 40px;
-  color: white;
+  color: rgb(55, 96, 211);
 }
 </style>

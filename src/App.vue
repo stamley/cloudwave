@@ -26,15 +26,23 @@ export default {
 </script>
 
 <style>
+@font-face {
+  font-family: "Sporting";
+  src: local("Sporting"),
+   url(./fonts/Sporting.ttf) format("truetype");
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: white;
-  height: 100vh;
-  border: solid;
-  background-color: rgb(34, 34, 34);
+  /*color: white;*/
+  /*height: 100vh;*/
+  /*border: solid;*/
+  background-color: rgb(13, 24, 48);
+}
+html{
+  background-color: rgb(13, 24, 48);
 }
 .profile-presenter{
   display: none;

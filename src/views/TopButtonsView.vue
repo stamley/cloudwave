@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="imgDiv">
-            <img src="https://earthsky.org/upl/2014/05/kelvin-helmhotz-clouds1-e1495216683995.jpg" alt="icon">
+            <img src="../assets/logo.png" alt="icon">
         </div>
         <div class="buttons">
             <button class="deleteButton">Delete account</button>
@@ -26,17 +26,17 @@
     grid-template-areas:
     "imgDiv buttons";
     padding-top: 20px;
-    background-image: url(https://media1.giphy.com/media/M9TbsVzWI8YAEEJJ5u/giphy.gif?cid=6c09b952b4a564a8722f7078d8617830e3e24954ce826060&rid=giphy.gif&ct=s);
+    /*background-image: url(https://media1.giphy.com/media/M9TbsVzWI8YAEEJJ5u/giphy.gif?cid=6c09b952b4a564a8722f7078d8617830e3e24954ce826060&rid=giphy.gif&ct=s);*/
     background-size: contain;
     border-radius: 5px;
 }
 
 .imgDiv img{
-    width: 40%;
-    border-radius: 30%;
+    width: 60%;
+    /*border-radius: 30%;*/
     height: auto;
     margin: 5px;
-    border: solid;
+    /*border: solid;*/
 }
 
 .imgDiv{
@@ -44,6 +44,7 @@
 }
 
 .buttons{
+    padding-top: 10px;
     grid-area: buttons;
     display: grid;
     grid-template-columns: auto;
@@ -54,10 +55,10 @@
 
 .buttons button{
     border-radius: 10px;
-    margin: 20px;
-    font-family: cursive;
-    background-color: rgb(27, 27, 27);
-    color: white;
+    margin: 30px;
+    font-family: "Sporting", Helvetica;
+    background-color: rgb(178, 197, 237);
+    color: rgb(55, 96, 211);
 }
 
 .deleteButton{
