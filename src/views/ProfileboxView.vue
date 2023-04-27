@@ -34,6 +34,7 @@
 import { ref, onMounted } from "vue";
 import { auth } from "../firebaseModel";
 import { useRouter } from "vue-router";
+import {loggedIn} from "../logedIn";
 
 export default {
   name: "ProfileboxView",
@@ -94,6 +95,7 @@ export default {
         .signOut()
         .then(() => {
           console.log("Logged out successfully!");
+          loggedIn.value = false;
           router.push("/login");
         })
         .catch((error) => {

@@ -12,7 +12,6 @@
       />
       <button class="login" @click="loginUser">Login</button>
       <button class="resPass">Reset password</button>
-      <button class="resUsern">Reset username</button>
       <button class="register" @click="registerUser">Register</button>
     </div>
     <img
@@ -39,6 +38,7 @@
 import { ref } from "vue";
 import { auth, signInWithEmailAndPassword } from "../firebaseModel";
 import { useRouter } from "vue-router";
+import {loggedIn} from "../logedIn";
 
 export default {
   name: "LoginView",
@@ -51,6 +51,7 @@ export default {
       try {
         await signInWithEmailAndPassword(auth, email.value, password.value);
         console.log("User logged in succesfully");
+        loggedIn.value = true;
         router.push("/profile");
       } catch (error) {
         alert(error.message);
@@ -97,7 +98,7 @@ export default {
     "signInText signInText signInText"
     "mailBox mailBox mailBox"
     "passBox passBox passBox"
-    "register resPass resUsern";
+    "register resPass login";
   border: solid 1px;
 }
 
@@ -146,8 +147,8 @@ export default {
   margin-right: auto;
 }
 
-.resUsern {
-  grid-area: resUsern;
+.login{
+  grid-area: login;
   margin-right: auto;
 }
 
