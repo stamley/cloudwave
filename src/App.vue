@@ -15,14 +15,25 @@
 //import HelloWorld from './views/HelloWorld.vue'
 // import ProfileActionPresenter from "./presenters/ProfileActionPresenter.vue";
 import ProfilePresenter from "./presenters/ProfilePresenter.vue";
-
+import router from "./router";
+import {loggedIn} from "./logedIn";
+    console.log(loggedIn) 
 export default {
   name: "App",
   components: {
     // ProfileActionPresenter,
     ProfilePresenter,
   },
+  mounted() {
+    // Check if window location hash is empty
+    if (!loggedIn.value) {
+      // Redirect to '/login'
+      router.push('/login');
+    }
+  },
 };
+
+
 </script>
 
 <style>
@@ -33,7 +44,6 @@ export default {
   text-align: center;
   color: white;
   height: 100vh;
-  border: solid;
   background-color: rgb(34, 34, 34);
 }
 .profile-presenter{
