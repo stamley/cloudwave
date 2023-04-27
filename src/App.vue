@@ -2,20 +2,22 @@
   <!--<img alt="Vue logo" src="./assets/logo.png">-->
   <!--<HelloWorld msg="Welcome to Your Vue.js App"/>-->
   <div>
-    <router-link to="/login">Login  </router-link>
-    <router-link to="/profile">Profile  </router-link>
-    <router-link to="/create-account">Create-account</router-link>
-    <router-view></router-view>
+    <!-- <router-link to="/login">Login </router-link> -->
+    <!-- <router-link to="/profile">Profile </router-link> -->
+    <!-- <router-link to="/create-account">Create-account</router-link> -->
+    <router-view />
   </div>
   <!--<ProfileActionPresenter />-->
-  <ProfilePresenter v-if="false"/>
+  <ProfilePresenter v-if="false" />
 </template>
 
 <script>
 //import HelloWorld from './views/HelloWorld.vue'
 // import ProfileActionPresenter from "./presenters/ProfileActionPresenter.vue";
 import ProfilePresenter from "./presenters/ProfilePresenter.vue";
-
+// import router from "./router";
+import { loggedIn } from "./logedIn";
+console.log(loggedIn);
 export default {
   name: "App",
   components: {
@@ -44,7 +46,7 @@ export default {
 html{
   background-color: rgb(13, 24, 48);
 }
-.profile-presenter{
+.profile-presenter {
   display: none;
 }
 </style>

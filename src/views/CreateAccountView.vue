@@ -48,6 +48,7 @@
 import { ref } from "vue";
 import { auth, createUserWithEmailAndPassword } from "../firebaseModel";
 import { useRouter } from "vue-router";
+import { loggedIn } from "../logedIn";
 
 export default {
   name: "CreateAccountView",
@@ -75,6 +76,7 @@ export default {
             displayName: fullName.value,
           });
         }
+        loggedIn.value = true;
         router.push("/profile");
       } catch (error) {
         alert(error.message);
@@ -87,6 +89,7 @@ export default {
       password,
       confirmPassword,
       registerUser,
+      loggedIn,
     };
   },
 };

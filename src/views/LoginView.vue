@@ -12,7 +12,6 @@
       />
       <button class="login" @click="loginUser">Login</button>
       <button class="resPass">Reset password</button>
-      <button class="resUsern">Reset username</button>
       <button class="register" @click="registerUser">Register</button>
     </div>
     <img
@@ -25,7 +24,7 @@
       <p>
         Quickly, click on the sad cloud to make an account and make him happy!
       </p>
-      <a href=""
+      <a @click="registerUser"
         ><img
           src="https://media2.giphy.com/media/QBdwtKJMQ90euUGQ08/giphy.gif?cid=6c09b952yhzumvelezjr9cgfgkpp3ovbophw6hfo3owp1298&rid=giphy.gif&ct=s"
           alt="sad cloud"
@@ -39,6 +38,7 @@
 import { ref } from "vue";
 import { auth, signInWithEmailAndPassword } from "../firebaseModel";
 import { useRouter } from "vue-router";
+import { loggedIn } from "../logedIn";
 
 export default {
   name: "LoginView",
@@ -51,17 +51,20 @@ export default {
       try {
         await signInWithEmailAndPassword(auth, email.value, password.value);
         console.log("User logged in succesfully");
-
+        loggedIn.value = true;
         router.push("/profile");
       } catch (error) {
         alert(error.message);
       }
     };
-
+    const registerUser = async () => {
+      router.push("/create-account");
+    };
     return {
       email,
       password,
       loginUser,
+      registerUser,
     };
   },
 };
@@ -98,7 +101,7 @@ export default {
     "signInText signInText signInText"
     "mailBox mailBox mailBox"
     "passBox passBox passBox"
-    "register resPass resUsern";
+    "register resPass login";
   border: solid 1px;
 }
 
@@ -147,8 +150,8 @@ export default {
   margin-right: auto;
 }
 
-.resUsern {
-  grid-area: resUsern;
+.login {
+  grid-area: login;
   margin-right: auto;
 }
 
