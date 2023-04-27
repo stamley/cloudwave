@@ -24,7 +24,7 @@
       <p>
         Quickly, click on the sad cloud to make an account and make him happy!
       </p>
-      <a href=""
+      <a @click="registerUser"
         ><img
           src="https://media2.giphy.com/media/QBdwtKJMQ90euUGQ08/giphy.gif?cid=6c09b952yhzumvelezjr9cgfgkpp3ovbophw6hfo3owp1298&rid=giphy.gif&ct=s"
           alt="sad cloud"
@@ -57,11 +57,14 @@ export default {
         alert(error.message);
       }
     };
-
+    const registerUser = async () => {
+      router.push("/create-account");
+    };
     return {
       email,
       password,
       loginUser,
+      registerUser,
     };
   },
 };

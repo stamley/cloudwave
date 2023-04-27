@@ -2,10 +2,10 @@
   <!--<img alt="Vue logo" src="./assets/logo.png">-->
   <!--<HelloWorld msg="Welcome to Your Vue.js App"/>-->
   <div>
-    <router-link to="/login">Login </router-link>
-    <router-link to="/profile">Profile </router-link>
-    <router-link to="/create-account">Create-account</router-link>
-    <router-view></router-view>
+    <!-- <router-link to="/login">Login </router-link> -->
+    <!-- <router-link to="/profile">Profile </router-link> -->
+    <!-- <router-link to="/create-account">Create-account</router-link> -->
+    <router-view />
   </div>
   <!--<ProfileActionPresenter />-->
   <ProfilePresenter v-if="false" />
@@ -23,13 +23,6 @@ export default {
   components: {
     // ProfileActionPresenter,
     ProfilePresenter,
-  },
-  mounted() {
-    // Check if window location hash is empty
-    if (!loggedIn.value) {
-      // Redirect to '/login'
-      router.push("/login");
-    }
   },
 };
 </script>
