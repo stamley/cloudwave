@@ -6,9 +6,9 @@ import { loggedIn } from "./logedIn";
 // Register the navigation guard
 router.beforeEach((to, from, next) => {
   // Check if loggedIn value is false and the destination route is not the login page
-  if (!loggedIn.value && to.path !== '/login') {
+  if (!loggedIn.value && to.path === "/profile") {
     // Redirect to the login page
-    next('/login');
+    next("/login");
   } else {
     // Continue with the navigation
     next();

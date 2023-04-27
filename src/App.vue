@@ -16,8 +16,8 @@
 // import ProfileActionPresenter from "./presenters/ProfileActionPresenter.vue";
 import ProfilePresenter from "./presenters/ProfilePresenter.vue";
 import router from "./router";
-import {loggedIn} from "./logedIn";
-    console.log(loggedIn) 
+import { loggedIn } from "./logedIn";
+console.log(loggedIn);
 export default {
   name: "App",
   components: {
@@ -28,12 +28,10 @@ export default {
     // Check if window location hash is empty
     if (!loggedIn.value) {
       // Redirect to '/login'
-      router.push('/login');
+      router.push("/login");
     }
   },
 };
-
-
 </script>
 
 <style>
