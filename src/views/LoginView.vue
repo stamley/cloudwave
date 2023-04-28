@@ -38,7 +38,7 @@
 import { ref } from "vue";
 import { auth, signInWithEmailAndPassword } from "../firebaseModel";
 import { useRouter } from "vue-router";
-import {loggedIn} from "../logedIn";
+import { loggedIn } from "../logedIn";
 
 export default {
   name: "LoginView",
@@ -57,11 +57,14 @@ export default {
         alert(error.message);
       }
     };
-
+    const registerUser = async () => {
+      router.push("/create-account");
+    };
     return {
       email,
       password,
       loginUser,
+      registerUser,
     };
   },
 };
@@ -147,7 +150,7 @@ export default {
   margin-right: auto;
 }
 
-.login{
+.login {
   grid-area: login;
   margin-right: auto;
 }
