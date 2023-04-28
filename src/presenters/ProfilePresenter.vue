@@ -5,6 +5,7 @@
   <SavedSoundsBoxView />
   <ModifySoundsView />
   <EqualizerView />
+  <FooterView />
 </template>
 <script>
 /*
@@ -20,6 +21,7 @@ import SoundsView from "@/views/SoundsView.vue";
 import EqualizerView from "@/views/EqualizerView.vue";
 import TopButtonsView from "@/views/TopButtonsView.vue";
 import SavedSoundsBoxView from "@/views/SavedSoundsBoxView.vue";
+import FooterView from "@/views/FooterView.vue";
 
 export default {
   name: "ProfilePresenter",
@@ -30,6 +32,7 @@ export default {
     EqualizerView,
     TopButtonsView,
     SavedSoundsBoxView,
+    FooterView,
   },
 };
 </script>

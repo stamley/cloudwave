@@ -25,9 +25,15 @@
       />
       <input
         type="password"
-        placeholder="Confirm password"
+        placeholder="Confirm your password"
         class="ConpassBox"
         v-model="confirmPassword"
+      />
+
+      <input
+        type="Synth password"
+        placeholder="Synth Password"
+        class="SyPassBox"
       />
 
       <button class="register" @click="registerUser">Register</button>
@@ -42,6 +48,7 @@
 import { ref } from "vue";
 import { auth, createUserWithEmailAndPassword } from "../firebaseModel";
 import { useRouter } from "vue-router";
+import { loggedIn } from "../logedIn";
 
 export default {
   name: "CreateAccountView",
@@ -69,6 +76,7 @@ export default {
             displayName: fullName.value,
           });
         }
+        loggedIn.value = true;
         router.push("/profile");
       } catch (error) {
         alert(error.message);
@@ -81,6 +89,7 @@ export default {
       password,
       confirmPassword,
       registerUser,
+      loggedIn,
     };
   },
 };
@@ -100,14 +109,13 @@ export default {
 }
 
 .title {
-  margin-top: 50px;
+  margin-top: 30px;
   grid-area: title;
-  margin-bottom: 50px;
+  margin-bottom: 35px;
 }
 
 .signInBox {
-  width: 50%;
-  length: 50%;
+  width: 60%;
   margin-right: auto;
   margin-left: auto;
   grid-area: signInBox;
@@ -121,7 +129,8 @@ export default {
     "mailBox mailBox mailBox"
     "passBox passBox passBox"
     "ConpassBox ConpassBox ConpassBox"
-    "register register register";
+    "register register register"
+    "SyPassBox SyPassBox SyPassBox";
   border: solid 5px;
 }
 
@@ -172,6 +181,15 @@ export default {
   margin-bottom: 10px;
 }
 
+.SyPassBox {
+  width: 50%;
+  height: 30px;
+  grid-area: passBox;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 120px;
+  margin-bottom: 10px;
+}
 .signInBox button {
   width: fit-content;
   margin: auto;
@@ -180,7 +198,7 @@ export default {
   color: white;
   margin-bottom: 20px;
   font-family: cursive;
-  padding: 13px;
+  padding: 11px;
 }
 
 .register {
