@@ -9,6 +9,7 @@
         placeholder="Full Name"
         class="nameBox"
         v-model="fullName"
+        id = "fullNameBox"
       />
       <input
         type="email"

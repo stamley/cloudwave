@@ -15,10 +15,14 @@ const db = getDatabase(app);
 const auth = getAuth(app);
 
 auth.onAuthStateChanged((user) => {
+  console.log(document.getElementById('fullNameBox').value)
   if (user) {
     set(ref(db, REF + "users/" + user.uid), {
-      name: user.displayName,
+      name: document.getElementById('fullNameBox').value,
       email: user.email,
+      base: 0,
+      treble: 0,
+      mid: 0,
     });
   }
 });
