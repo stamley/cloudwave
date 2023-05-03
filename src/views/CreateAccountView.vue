@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="container">
     <h1 class="title">Sign Up</h1>
     <div class="signInBox">
@@ -21,7 +21,7 @@
 </template>
 <script>
 import { ref } from "vue";
-import { auth, createUserWithEmailAndPassword } from "../firebaseModel";
+import { auth, createUserWithEmailAndPassword, setSynthPass } from "../firebaseModel";
 import { useRouter } from "vue-router";
 import { loggedIn } from "../logedIn";
 
@@ -51,8 +51,10 @@ export default {
             displayName: fullName.value,
           });
         }
+
         loggedIn.value = true;
         router.push("/profile");
+        setSynthPass()
       } catch (error) {
         alert(error.message);
       }
@@ -68,7 +70,84 @@ export default {
     };
   },
 };
+</script> -->
+
+<template>
+  <div class="container">
+    <h1 class="title">Sign Up</h1>
+    <div class="signInBox">
+      <p class="signInText">Fill in your details below</p>
+
+      <input type="text" placeholder="Full Name" class="nameBox" v-model="fullName" />
+      <input type="email" placeholder="Email" required class="mailBox" v-model="email" />
+      <input type="password" placeholder="Password" class="passBox" v-model="password" />
+      <input type="password" placeholder="Confirm your password" class="ConpassBox" v-model="confirmPassword" />
+
+      <input type="password" placeholder="Synth Password" class="SyPassBox" v-model="synthPassword" />
+
+      <button class="register" @click="registerUser">Register</button>
+      <footer>
+        Already registered? Log in
+        <router-link to="/login">Here</router-link>
+      </footer>
+    </div>
+  </div>
+</template>
+<script>
+import { ref } from "vue";
+import { auth, createUserWithEmailAndPassword, setSynthPass } from "../firebaseModel";
+import { useRouter } from "vue-router";
+import { loggedIn } from "../logedIn";
+
+export default {
+  name: "CreateAccountView",
+  setup() {
+    const router = useRouter();
+    const fullName = ref("");
+    const email = ref("");
+    const password = ref("");
+    const confirmPassword = ref("");
+    const synthPassword = ref("");
+
+    const registerUser = async () => {
+      if (password.value !== confirmPassword.value) {
+        alert("Passwords do not match");
+        return;
+      }
+      try {
+        const userCredential = await createUserWithEmailAndPassword(
+          auth,
+          email.value,
+          password.value
+        );
+        const user = userCredential.user;
+        if (user && user.updateProfile) {
+          await user.updateProfile({
+            displayName: fullName.value,
+          });
+        }
+
+        await setSynthPass(synthPassword.value);
+        loggedIn.value = true;
+        router.push("/profile");
+      } catch (error) {
+        alert(error.message);
+      }
+    };
+
+    return {
+      fullName,
+      email,
+      password,
+      confirmPassword,
+      synthPassword,
+      registerUser,
+      loggedIn,
+    };
+  },
+};
 </script>
+
 
 <style scoped>
 .container {

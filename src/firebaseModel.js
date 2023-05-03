@@ -13,6 +13,10 @@ import {
   getselectedTreble,
 } from "./components/selectedIndex";
 
+let synthPass = "";
+function setSynthPass(synthpass) {
+  synthPass = synthpass;
+}
 const app = initializeApp(firebaseConfig);
 
 const REF = "CloudWave/";
@@ -30,7 +34,8 @@ const updateUserData = () => {
         index: getSelectedIndex().value,
         Bass: getselectedBass().value,
         Mid: getselectedMid().value,
-        Trebble: getselectedTreble().value,
+        Treble: getselectedTreble().value,
+        SynthPassword: synthPass,
       })
         .then(() => {
           console.log("User data updated successfully");
@@ -87,4 +92,5 @@ export {
   getAuth,
   login,
   updateUserData,
+  setSynthPass,
 };
