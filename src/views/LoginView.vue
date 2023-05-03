@@ -14,7 +14,7 @@
       <button class="resPass">Reset password</button>
       <button class="register" @click="registerUser">Register</button>
       <footer>
-        Forgot you password? Click
+        Forgot your password? Click
         <router-link to="/forgot-account">Here</router-link>
       </footer>
     </div>
