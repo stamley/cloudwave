@@ -42,6 +42,10 @@ function signOutCurrentUser(){
   });
 }
 
+function deleteCurrentUser(){
+  set(ref(db, REF + MAC + "users/" + auth.currentUser.uid), null);
+}
+
 function save() {
   const name = document.getElementById("name").value;
   const email = document.querySelector(".mailBox").value;
@@ -87,4 +91,5 @@ export {
   getAuth,
   login,
   signOutCurrentUser,
+  deleteCurrentUser,
 };
