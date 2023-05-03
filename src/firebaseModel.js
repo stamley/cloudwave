@@ -10,22 +10,37 @@ import { set, ref, getDatabase } from "firebase/database";
 const app = initializeApp(firebaseConfig);
 
 const REF = "CloudWave/";
+const MAC = "dc:a6:32:b4:da:a5/";
 
 const db = getDatabase(app);
 const auth = getAuth(app);
 
 auth.onAuthStateChanged((user) => {
-  console.log(document.getElementById('fullNameBox').value)
   if (user) {
-    set(ref(db, REF + "users/" + user.uid), {
+    set(ref(db, REF + MAC + "users/" + user.uid), {
       name: document.getElementById('fullNameBox').value,
       email: user.email,
       base: 0,
       treble: 0,
       mid: 0,
     });
+    set(ref(db, REF + MAC + "/CurrentUser"), {
+      User: user.uid,
+    });
   }
 });
+
+auth.onIdTokenChanged(() => {
+  set(ref(db, REF + MAC + "/CurrentUser"), {
+    User: auth.currentUser.uid,
+  });
+})
+
+function signOutCurrentUser(){
+  set(ref(db, REF + MAC + "/CurrentUser"), {
+    User: "",
+  });
+}
 
 function save() {
   const name = document.getElementById("name").value;
@@ -71,4 +86,5 @@ export {
   signInWithEmailAndPassword,
   getAuth,
   login,
+  signOutCurrentUser,
 };
