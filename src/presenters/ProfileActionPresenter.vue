@@ -1,6 +1,7 @@
 <template>
-  <LoginView v-if="!notLoggedIn"/>
-  <CreateAccountView v-if="notLoggedIn"/>
+  <LoginView v-if="!notLoggedIn" />
+  <CreateAccountView v-if="notLoggedIn" />
+  <ForgotPassword />
 </template>
 <script>
 /* 
@@ -11,12 +12,13 @@
 
 import CreateAccountView from "@/views/CreateAccountView.vue";
 import LoginView from "@/views/LoginView.vue";
+import ForgotPassword from "@/views/ForgotPassword.vue";
 
 export default {
   name: "ProfileActionPresenter",
-  components: { CreateAccountView, LoginView },
-  data(){
-    return { notLoggedIn: true}
-  }
+  components: { CreateAccountView, LoginView, ForgotPassword },
+  data() {
+    return { notLoggedIn: true };
+  },
 };
 </script>

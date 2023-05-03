@@ -13,6 +13,10 @@
       <button class="login" @click="loginUser">Login</button>
       <button class="resPass">Reset password</button>
       <button class="register" @click="registerUser">Register</button>
+      <footer>
+        Forgot you password? Click
+        <router-link to="/forgot-account">Here</router-link>
+      </footer>
     </div>
     <img
       src="https://i.gifer.com/origin/0d/0d6cf5b4980702758a616a14bed86e3a_w200.gif"
@@ -60,6 +64,10 @@ export default {
     const registerUser = async () => {
       router.push("/create-account");
     };
+    // const Forgot = async () => {
+    //   router.push("/forgot-account");
+    // };
+
     return {
       email,
       password,

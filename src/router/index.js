@@ -16,9 +16,13 @@ const router = createRouter({
     {
       path: "/profile",
       component: () => import("../presenters/ProfilePresenter.vue"),
-    //   meta: {
-    //     requiresAuth: true,
-    //   },
+      //   meta: {
+      //     requiresAuth: true,
+      //   },
+    },
+    {
+      path: "/forgot-account",
+      component: () => import("../views/ForgotPassword.vue"),
     },
   ],
 });
