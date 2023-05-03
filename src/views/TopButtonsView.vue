@@ -1,4 +1,5 @@
 <template>
+    <!--<image src="../assets/sinewavelonger.png"/>-->
     <div class="container">
         <div class="imgDiv">
             <img src="../assets/logo.png" alt="icon">
@@ -17,6 +18,8 @@
 <style scoped>
 
 .container{
+    /*background-image: url(../assets/sinewavelonger.png);
+    background-repeat: no-repeat;*/
     width: 65%;
     margin-right: auto;
     margin-left: auto;
@@ -57,8 +60,8 @@
     border-radius: 10px;
     margin: 30px;
     font-family: "Sporting", Helvetica;
-    background-color: rgb(178, 197, 237);
-    color: rgb(55, 96, 211);
+    color: rgb(178, 197, 237);
+    background-color: rgb(55, 96, 211);
 }
 
 .deleteButton{

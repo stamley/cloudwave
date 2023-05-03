@@ -163,7 +163,7 @@ input {
   margin-left: 6px;
   width: 100px;
   background-color: rgb(178, 197, 237);
-  border-radius: 5px;
+  border-radius: 3px;
   font-family: "Sporting", Helvetica;
   font-size: 10px;
 }

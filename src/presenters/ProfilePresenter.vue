@@ -46,9 +46,9 @@ button {
   font-family: "Sporting", Helvetica;
   font-size: 16px;
   border-radius: 5px;
-  background-color: rgb(178, 197, 237);
+  color: rgb(173, 192, 235);
   border-color: rgb(55, 96, 211);
-  color: rgb(55, 96, 211);
+  background-color: rgb(55, 96, 211);
 }
 
 </style>
