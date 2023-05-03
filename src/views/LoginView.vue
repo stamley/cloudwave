@@ -129,7 +129,7 @@ export default {
   margin-bottom: 20px;
 }
 
-.signInBox button {
+/*.signInBox button {
   width: fit-content;
   border-radius: 50px;
   background-color: rgb(27, 27, 27);
@@ -137,7 +137,7 @@ export default {
   margin-bottom: 20px;
   font-family: cursive;
   padding: 13px;
-}
+}*/
 
 .register {
   grid-area: register;
