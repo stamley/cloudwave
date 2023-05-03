@@ -4,37 +4,12 @@
     <div class="signInBox">
       <p class="signInText">Fill in your details below</p>
 
-      <input
-        type="text"
-        placeholder="Full Name"
-        class="nameBox"
-        v-model="fullName"
-      />
-      <input
-        type="email"
-        placeholder="Email"
-        required
-        class="mailBox"
-        v-model="email"
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        class="passBox"
-        v-model="password"
-      />
-      <input
-        type="password"
-        placeholder="Confirm your password"
-        class="ConpassBox"
-        v-model="confirmPassword"
-      />
+      <input type="text" placeholder="Full Name" class="nameBox" v-model="fullName" />
+      <input type="email" placeholder="Email" required class="mailBox" v-model="email" />
+      <input type="password" placeholder="Password" class="passBox" v-model="password" />
+      <input type="password" placeholder="Confirm your password" class="ConpassBox" v-model="confirmPassword" />
 
-      <input
-        type="Synth password"
-        placeholder="Synth Password"
-        class="SyPassBox"
-      />
+      <input type="Synth password" placeholder="Synth Password" class="SyPassBox" />
 
       <button class="register" @click="registerUser">Register</button>
       <footer>
@@ -190,6 +165,7 @@ export default {
   margin-top: 120px;
   margin-bottom: 10px;
 }
+
 .signInBox button {
   width: fit-content;
   margin: auto;

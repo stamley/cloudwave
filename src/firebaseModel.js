@@ -6,6 +6,12 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { set, ref, getDatabase } from "firebase/database";
+import {
+  getSelectedIndex,
+  getselectedBass,
+  getselectedMid,
+  getselectedTreble,
+} from "./components/selectedIndex";
 
 const app = initializeApp(firebaseConfig);
 
@@ -14,14 +20,27 @@ const REF = "CloudWave/";
 const db = getDatabase(app);
 const auth = getAuth(app);
 
-auth.onAuthStateChanged((user) => {
-  if (user) {
-    set(ref(db, REF + "users/" + user.uid), {
-      name: user.displayName,
-      email: user.email,
-    });
-  }
-});
+const updateUserData = () => {
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      const userRef = ref(db, REF + "users/" + user.uid);
+      set(userRef, {
+        name: user.displayName,
+        email: user.email,
+        index: getSelectedIndex().value,
+        Bass: getselectedBass().value,
+        Mid: getselectedMid().value,
+        Trebble: getselectedTreble().value,
+      })
+        .then(() => {
+          console.log("User data updated successfully");
+        })
+        .catch((error) => {
+          console.error("Error updating user data:", error);
+        });
+    }
+  });
+};
 
 function save() {
   const name = document.getElementById("name").value;
@@ -67,4 +86,5 @@ export {
   signInWithEmailAndPassword,
   getAuth,
   login,
+  updateUserData,
 };

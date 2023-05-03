@@ -1,24 +1,22 @@
 <template>
   <div class="profile-box">
-    <label for="music-select" class="selecMusic">Select a Music:</label>
-    <select v-model="selectedMusic" @change="selectedType">
-      <option
-        v-for="(music, index) in musicOptions"
-        :key="index"
-        :value="music"
-      >
-        {{ music }}
+    <label for="instrument-select" class="selectInstrument">Select an Instrument:</label>
+    <select v-model="selectedInstrument" @change="updateSelectedIndex">
+      <option v-for="(instrument, index) in instrumentOptions" :key="index" :value="instrument">
+        {{ instrument }}
       </option>
     </select>
   </div>
 </template>
 
 <script>
+import { setSelectedIndex, getSelectedIndex } from "../components/selectedIndex.js";
+import { updateUserData } from "../firebaseModel.js";
 export default {
   data() {
     return {
-      selectedMusic: "",
-      musicOptions: [
+      selectedInstrument: "",
+      instrumentOptions: [
         "Piano",
         "Guitar",
         "Flute",
@@ -29,13 +27,19 @@ export default {
       ],
     };
   },
+
   methods: {
-    selectedType() {
-      console.log(" you chose " + this.selectedMusic);
+    updateSelectedIndex() {
+      const index = this.instrumentOptions.indexOf(this.selectedInstrument) + 1;
+      setSelectedIndex(index);
+      getSelectedIndex();
+      updateUserData();
+      console.log(`You chose ${this.selectedInstrument} with index ${index}`);
     },
   },
 };
 </script>
+
 <style scoped>
 .profile-box {
   display: flex-end;
@@ -46,11 +50,8 @@ export default {
   padding: 20px;
   margin: 50px auto;
   max-inline-size: 700px;
-  /* background-image: url("https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat; */
 }
+
 .selecMusic {
   color: white;
 }
