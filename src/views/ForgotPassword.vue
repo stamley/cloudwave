@@ -7,7 +7,7 @@
       Send Password Reset Email
     </button>
     <button class="buttonnnn" @click="backtologinpage">
-      Back to login page
+      Back to Login page
     </button>
   </div>
 </template>
@@ -33,7 +33,7 @@ export default {
         })
         .catch(() => {
           // Error sending password reset email
-          alert("but your Email please ");
+          alert("put your Email please ");
         });
     },
 
