@@ -6,9 +6,7 @@
         </div>
         <div class="buttons">
             <button class="deleteButton" @click="deleteAccount">Delete account</button>
-            <button class="changeUserButton">Change User</button>
-            <button class="changeMailButton">Change mail</button>
-            <button class="changePassword">Change password</button>
+            <button class="changePassword" @click="goToChangePass">Change password</button>
         </div>
     </div>
 </template>
@@ -46,7 +44,11 @@ export default {
         })
     }
 
-    return { deleteAccount, router, };
+    const goToChangePass = async () => {
+      router.push("/forgot-account")
+    }
+
+    return { deleteAccount, router, goToChangePass, };
   },
 };
 
@@ -91,7 +93,7 @@ export default {
     grid-template-columns: auto;
     grid-template-rows: auto;
     grid-template-areas:
-    "deleteButton changeUserButton changeMailButton changePassword";
+    "deleteButton changePassword";
 }
 
 .buttons button{
@@ -104,10 +106,6 @@ export default {
 
 .deleteButton {
   grid-area: deleteButton;
-}
-
-.changeUserButton {
-  grid-area: changeUserButton;
 }
 
 .changeMailButton {
