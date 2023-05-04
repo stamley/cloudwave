@@ -44,7 +44,8 @@ export default {
   justify-content: center;
   border: 3px solid whitesmoke;
   border-radius: 20px;
-  padding: 50px;
+  padding: 30px;
+  padding-top: 80px;
   margin: 10px auto;
   max-inline-size: 625px;
 } */
@@ -60,10 +61,8 @@ export default {
 }
 
 .slider {
-  margin: 0 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .slider input[type="range"] {

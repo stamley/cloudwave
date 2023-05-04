@@ -1,39 +1,64 @@
 <template>
   <div class="container">
     <div class="imgDiv">
-      <img
-        src="https://earthsky.org/upl/2014/05/kelvin-helmhotz-clouds1-e1495216683995.jpg"
-        alt="icon"
-      />
+      <img src="https://earthsky.org/upl/2014/05/kelvin-helmhotz-clouds1-e1495216683995.jpg" alt="icon">
     </div>
     <div class="buttons">
-      <button class="deleteButton">Delete account</button>
-      <!-- <button class="deleteButton" @click="sendPasswordResetEmail">
-        Delete
-      </button> -->
+      <button class="deleteButton" @click="deleteAccount">Delete account</button>
       <button class="changeUserButton">Change User</button>
       <button class="changeMailButton">Change mail</button>
       <button class="changePassword">Change password</button>
     </div>
   </div>
-</template>
+  <div class="buttons">
+    <button class="deleteButton">Delete account</button>
+    <!-- <button class="deleteButton" @click="sendPasswordResetEmail">
+        Delete
+      </button> -->
+    <button class="changeUserButton">Change User</button>
+    <button class="changeMailButton">Change mail</button>
+    <button class="changePassword">Change password</button>
+  </div>
+</div></template>
 <script>
-// import { getAuth, deleteUser } from "firebase/auth";
 
-// const auth = getAuth();
-// const user = auth.currentUser;
-// const uid = "USER_UID_HERE";
+import { auth } from "../firebaseModel";
+import { deleteCurrentUser } from "../firebaseModel";
+import { loggedIn } from "../logedIn";
+import { signOutCurrentUser } from "../firebaseModel";
+import { useRouter } from "vue-router";
+import { deleteUser } from 'firebase/auth';
 
-// deleteUser(user)
-//   .then(() => {
-//     // User deleted.
-//     console.log(`Successfully deleted user with UID: ${uid}`);
-//   })
-//   .catch((error) => {
-//     // An error ocurred
-//     console.error(`Error deleting user with UID: ${uid}`, error);
-//   });
-//
+export default {
+  name: "TopButtonsView",
+  setup() {
+    const router = useRouter();
+    const deleteAccount = async () => {
+      deleteCurrentUser();
+      auth
+        .signOut()
+        .then(() => {
+          signOutCurrentUser();
+          loggedIn.value = false;
+          router.push("/login");
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+      deleteUser(auth.currentUser)
+        .then(() => {
+          alert("User deleted")
+        })
+        .catch((error) => {
+          console.error(error);
+        })
+    }
+
+    return { deleteAccount, router, };
+  },
+};
+
+
 </script>
 
 <style scoped>

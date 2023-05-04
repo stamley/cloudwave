@@ -4,10 +4,32 @@
     <div class="signInBox">
       <p class="signInText">Fill in your details below</p>
 
-      <input type="text" placeholder="Full Name" class="nameBox" v-model="fullName" />
-      <input type="email" placeholder="Email" required class="mailBox" v-model="email" />
-      <input type="password" placeholder="Password" class="passBox" v-model="password" />
-      <input type="password" placeholder="Confirm your password" class="ConpassBox" v-model="confirmPassword" />
+      <input
+        type="text"
+        placeholder="Full Name"
+        class="nameBox"
+        v-model="fullName"
+        id = "fullNameBox"
+      />
+      <input
+        type="email"
+        placeholder="Email"
+        required
+        class="mailBox"
+        v-model="email"
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        class="passBox"
+        v-model="password"
+      />
+      <input
+        type="password"
+        placeholder="Confirm your password"
+        class="ConpassBox"
+        v-model="confirmPassword"
+      />
 
       <input type="Synth password" placeholder="Synth Password" class="SyPassBox" />
 
