@@ -16,8 +16,7 @@
 // import ProfileActionPresenter from "./presenters/ProfileActionPresenter.vue";
 import ProfilePresenter from "./presenters/ProfilePresenter.vue";
 // import router from "./router";
-import { loggedIn } from "./logedIn";
-console.log(loggedIn);
+
 export default {
   name: "App",
   components: {
