@@ -1,8 +1,14 @@
 <template>
   <div class="profile-box">
     <div class="profile-details">
-      <img src="https://ichef.bbci.co.uk/news/999/cpsprodpb/15951/production/_117310488_16.jpg" alt="Profile picture"
-        width="100" height="100" />
+
+      <img
+        src="../assets/Default-Profile.png"
+        alt="Profile picture"
+        width="100"
+        height="100"
+      />
+
       <div class="welcome">
         <h2 v-if="user">Welcome {{ user.displayName }}</h2>
         <h2 v-else>Welcome!</h2>
@@ -49,7 +55,7 @@ export default {
     });
 
     const showChangeUsernameForm = () => {
-      showChangeUsername.value = true;
+      showChangeUsername.value = !showChangeUsername.value;
     };
 
     const changeUsername = () => {
@@ -122,11 +128,14 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 3px solid whitesmoke;
-  border-radius: 20px;
+  /*border: 3px solid whitesmoke;*/
+  border-radius: 6px;
   padding: 20px;
-  margin: 50px auto;
+  margin: 20px auto;
   max-inline-size: 700px;
+  background-color: rgb(178, 197, 237);
+  font-family: "Sporting", Helvetica;
+  color: rgb(55, 96, 211);
 }
 
 .profile-details {
@@ -140,6 +149,7 @@ export default {
 }
 
 .profile-actions {
+  padding-left: 30px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -156,9 +166,20 @@ export default {
 
 input {
   margin-bottom: 8px;
+  margin-left: 6px;
+  width: 100px;
+  background-color: rgb(178, 197, 237);
+  border-radius: 3px;
+  font-family: "Sporting", Helvetica;
+  font-size: 10px;
+}
+::placeholder{
+  color: rgb(55, 96, 211);
+  border-color: rgb(55, 96, 211);
 }
 
 button {
   margin-top: 8px;
+  margin-left: 6px;
 }
 </style>

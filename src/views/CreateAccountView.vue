@@ -12,11 +12,12 @@
       <input type="Synth password" placeholder="Synth Password" class="SyPassBox" id="synthPass" />
 
       <button class="register" @click="registerUser">Register</button>
-      <footer>
-        Already registered? Log in
-        <router-link to="/login">Here</router-link>
-      </footer>
+      
     </div>
+  </div>
+  <div class="footer">
+    Already registered? Log in
+    <router-link to="/login">Here</router-link>
   </div>
 </template>
 <script>
@@ -72,6 +73,19 @@ export default {
 </script>
 
 <style scoped>
+.link{
+  color: rgb(55, 96, 211);
+}
+.footer{
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  font-family: "Sporting", Helvetica;
+  font-size: 12px;
+  border-color: rgb(55, 96, 211);
+  color:rgb(178, 197, 237);
+}
 .container {
   display: grid;
   grid-template-columns: auto;
@@ -79,23 +93,29 @@ export default {
   grid-template-areas:
     "title"
     "signInBox";
-  width: 80%;
+  width: 60%;
   margin-right: auto;
   margin-left: auto;
+  color: rgb(178, 197, 237);
 }
 
 .title {
   margin-top: 30px;
   grid-area: title;
   margin-bottom: 35px;
+  font-family: "Sporting", Helvetica;
 }
 
 .signInBox {
-  width: 60%;
+  width: 35%;
   margin-right: auto;
   margin-left: auto;
   grid-area: signInBox;
   display: grid;
+  background-color: rgb(178, 197, 237);
+  color: rgb(55, 96, 211);
+  border-radius: 5px;
+
   grid-template-columns: auto;
   grid-template-rows: auto;
   grid-template-areas:
@@ -107,74 +127,71 @@ export default {
     "ConpassBox ConpassBox ConpassBox"
     "register register register"
     "SyPassBox SyPassBox SyPassBox";
-  border: solid 5px;
 }
 
 .signInText {
-  font-family: cursive;
+  font-family: "Sporting", Helvetica;
   font-size: 20px;
   grid-area: signInText;
 }
 
+input {
+  width: 60%;
+  height: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgb(178, 197, 237);
+  border-radius: 3px;
+  font-family: "Sporting", Helvetica;
+  font-size: 10px;
+}
+
+input:focus {
+  outline: none; /* to remove the default focus outline */
+  border-color: rgb(55, 96, 211);; /* change the border color */
+}
+
 /* Full name box */
-.nameBox {
+
+.box {
   width: 50%;
   height: 30px;
-  grid-area: nameBox;
   margin-right: auto;
   margin-left: auto;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
+.nameBox {
+  grid-area: nameBox;
+}
 .mailBox {
-  width: 50%;
-  height: 30px;
   grid-area: mailBox;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
 }
 
 .passBox {
-  width: 50%;
-  height: 30px;
   grid-area: passBox;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
 }
 
 .ConpassBox {
-  width: 50%;
-  height: 30px;
   grid-area: passBox;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 65px;
-  margin-bottom: 10px;
+  margin-top: 20px;
 }
 
 .SyPassBox {
-  width: 50%;
-  height: 30px;
   grid-area: passBox;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 120px;
-  margin-bottom: 10px;
+  margin-top: 40px;
+  margin-bottom: 20px;
 }
 
-.signInBox button {
+.registerButton {
+  margin-top: 10px;
+}
+
+button {
   width: fit-content;
   margin: auto;
-  border-radius: 60px;
-  background-color: rgb(27, 27, 27);
-  color: white;
   margin-bottom: 20px;
-  font-family: cursive;
   padding: 11px;
 }
 

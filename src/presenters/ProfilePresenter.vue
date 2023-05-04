@@ -40,6 +40,15 @@ export default {
 body {
   /* background-image: url("https://img.freepik.com/premium-photo/abstract-music-background_476363-6545.jpg?w=2000"); */
   background-size: 100%;
-  background-color: rgb(27, 27, 27);
+  background-color: rgb(0, 0, 0);
 }
+button {
+  font-family: "Sporting", Helvetica;
+  font-size: 16px;
+  border-radius: 5px;
+  color: rgb(173, 192, 235);
+  border-color: rgb(55, 96, 211);
+  background-color: rgb(55, 96, 211);
+}
+
 </style>

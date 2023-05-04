@@ -4,26 +4,45 @@
     <div class="signInBox">
       <p class="signInText">Enter your account details below</p>
       <input type="email" placeholder="Email" class="mailBox" v-model="email" />
-      <input type="password" placeholder="Password" class="passBox" v-model="password" />
-      <button class="login" @click="loginUser">Login</button>
-      <button class="resPass">Reset password</button>
-      <button class="register" @click="registerUser">Register</button>
-      <footer>
-        Forgot your password? Click
-        <router-link to="/forgot-account">Here</router-link>
-      </footer>
+      <input
+        type="password"
+        placeholder="Password"
+        class="passBox"
+        v-model="password"
+      />
+      <div class="accountButtons">
+        <button class="login" @click="loginUser">Login</button>
+        <button class="resPass">Reset password</button>
+        <button class="register" @click="registerUser">Register</button>
+      </div>
     </div>
-    <img src="https://i.gifer.com/origin/0d/0d6cf5b4980702758a616a14bed86e3a_w200.gif" alt="clouds gif" class="clouds" />
+    
+    <!--<img
+      src="https://i.gifer.com/origin/0d/0d6cf5b4980702758a616a14bed86e3a_w200.gif"
+      alt="clouds gif"
+      class="clouds"
+    />-->
+    <div class="footer">
+      Forgot your password? Click
+      <router-link class="link" to="/forgot-account">Here</router-link>
+    </div>
     <div class="noAccountBox">
-      <p>Do you not have an account?</p>
+      <!--<p>Do you not have an account?</p>
       <p>
         Quickly, click on the sad cloud to make an account and make him happy!
-      </p>
-      <a @click="registerUser"><img
-          src="https://media2.giphy.com/media/QBdwtKJMQ90euUGQ08/giphy.gif?cid=6c09b952yhzumvelezjr9cgfgkpp3ovbophw6hfo3owp1298&rid=giphy.gif&ct=s"
-          alt="sad cloud" class="sadCloud" /></a>
+      </p>-->
+      <p>Make this sad little cloud happy by making an account,</p>
+      <p> if you don't have one already</p>
+      <a @click="registerUser">
+        <!--src="https://media2.giphy.com/media/QBdwtKJMQ90euUGQ08/giphy.gif?cid=6c09b952yhzumvelezjr9cgfgkpp3ovbophw6hfo3owp1298&rid=giphy.gif&ct=s"-->
+        <img
+          src="../assets/blue-cloud-transparent.png"
+          alt="sad cloud"
+          class="sadCloud"
+      /></a>
     </div>
   </div>
+  
 </template>
 
 <script>
@@ -67,16 +86,30 @@ export default {
 </script>
 
 <style scoped>
+.link{
+  color: rgb(55, 96, 211);
+}
+.footer{
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Sporting", Helvetica;
+  font-size: 12px;
+  border-color: rgb(55, 96, 211);
+  color:rgb(178, 197, 237);
+}
 .container {
+  font-family: "Sporting", Helvetica;
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: auto;
   grid-template-areas:
     "title"
     "signInBox";
-  width: 65%;
+  width: 70%;
   margin-right: auto;
   margin-left: auto;
+  color: rgb(178, 197, 237);
 }
 
 .title {
@@ -86,29 +119,56 @@ export default {
 }
 
 .signInBox {
-  width: 40%;
+  width: auto;
+  background-color: rgb(178, 197, 237);
+  color: rgb(55, 96, 211);
+  border-radius: 6px;
+  padding: 10px;
   margin-right: auto;
   margin-left: auto;
+  margin-bottom: 10px;
   grid-area: signInBox;
   display: grid;
-  grid-template-columns: auto;
   grid-template-rows: auto;
   grid-template-areas:
     "signInText signInText signInText"
     "mailBox mailBox mailBox"
     "passBox passBox passBox"
     "register resPass login";
-  border: solid 1px;
 }
 
+.accountButtons {
+  display: flex;
+  text-align: center;
+  margin-left: 25%;
+  padding: 4px;
+  
+}
+
+
 .signInText {
-  font-family: cursive;
+  font-family: "Sporting", Helvetica;
   font-size: 20px;
   grid-area: signInText;
 }
 
+input {
+  width: 60%;
+  background-color: rgb(178, 197, 237);
+  border-radius: 3px;
+  font-family: "Sporting", Helvetica;
+  font-size: 10px;
+  margin-top: 0%;
+  margin-bottom: 0px;
+}
+
+input:focus {
+  outline: none; /* to remove the default focus outline */
+  border-color: rgb(55, 96, 211);; /* change the border color */
+}
+
 .mailBox {
-  width: 30%;
+  width: 50%;
   height: 16px;
   grid-area: mailBox;
   margin-right: auto;
@@ -116,23 +176,17 @@ export default {
 }
 
 .passBox {
-  width: 30%;
+  width: 50%;
   height: 16px;
   grid-area: passBox;
   margin-right: auto;
   margin-left: auto;
-  margin-top: 20px;
   margin-bottom: 20px;
 }
 
-.signInBox button {
-  width: fit-content;
-  border-radius: 50px;
-  background-color: rgb(27, 27, 27);
-  color: white;
-  margin-bottom: 20px;
-  font-family: cursive;
-  padding: 13px;
+button {
+  padding: 10px;
+  font-size: 13px;
 }
 
 .register {
@@ -151,8 +205,8 @@ export default {
   margin-right: auto;
 }
 
-.signInBox button:active {
-  background-color: black;
+button:active {
+  background-color: rgb(13, 24, 48);
 }
 
 .clouds {
@@ -163,15 +217,16 @@ export default {
 }
 
 .noAccountBox {
-  font-family: cursive;
+  font-family: "Sporting", Helvetica;
   width: 50%;
   margin-right: auto;
   margin-left: auto;
   margin-top: 20px;
+  font-size: 13px;
 }
 
 .sadCloud {
-  width: 30%;
+  width: 40%;
   margin-right: auto;
   margin-left: auto;
 }

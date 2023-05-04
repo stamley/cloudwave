@@ -1,15 +1,21 @@
 <template>
     <div class = "box-container">
         <div class="sound-box">
-            <div v-for="sound in sounds" :key="sound.id">
-                {{sound}}
+            <div class="sound-scroll-box">
+                <div v-for="sound in sounds" :key="sound.id">
+                    {{sound}}
+                </div>
+            </div>        
+            
+            <div>
+                <button>Remove</button>
+                <button>Modify</button>
             </div>
         </div>
+        
+        
     </div>
-    <div>
-        <button>Remove</button>
-        <button>Modify</button>
-    </div>
+    
 </template>
 
 <script>
@@ -23,20 +29,56 @@ export default{
 }
 </script>
 
-<style>
+<style scoped>
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    /*-webkit-box-shadow: inset 0 0 3px     rgba(0,0,0,0.3); */
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    outline-style: solid;
+    outline-width: 2px;
+    /*-webkit-box-shadow: inset 0 0 3px     rgba(0,0,0,0.5); */
+}
 .sound-box{
-    outline-style:ridge;
-    outline-color: black;
-    width: 40%;
+    /*outline-style:ridge;*/
+    /*outline-color: black;*/
+    width: 700px;
+    max-inline-size: 700px;
+    border-radius: 6px;
+    padding: 20px;
+    /*margin: 50px auto;*/
     left: 10%;
-    height: 50px;
-    overflow: auto;
+    height: 120px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    background-color: rgb(178, 197, 237);
+    justify-content: center;
+}
+.sound-scroll-box{
+    font-family: "Sporting", Helvetica;
+    color: rgb(55, 96, 211);
+    font-size: 15px;
+    outline-style: solid;
+    border-radius: 6px;
+    outline-color: rgb(55, 96, 211);
+    outline-width: 2px;
+    width: 70%;
+    overflow: auto;
 }
 .box-container{
     display: flex; 
     justify-content: center;
+    
+}
+
+button{
+    margin-left: 10px
 }
 
 </style>
