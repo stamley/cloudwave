@@ -20,6 +20,7 @@ function setSynthPass(synthpass) {
 const app = initializeApp(firebaseConfig);
 
 const REF = "CloudWave/";
+const MAC = "dc:a6:32:b4:da:a5";
 
 const db = getDatabase(app);
 const auth = getAuth(app);
@@ -27,7 +28,7 @@ const auth = getAuth(app);
 const updateUserData = () => {
   auth.onAuthStateChanged((user) => {
     if (user) {
-      const userRef = ref(db, REF + "users/" + user.uid);
+      const userRef = ref(db, REF + MAC + "users/" + user.uid);
       set(userRef, {
         name: user.displayName,
         email: user.email,
