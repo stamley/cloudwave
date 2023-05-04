@@ -12,7 +12,6 @@
       />
       <div class="accountButtons">
         <button class="login" @click="loginUser">Login</button>
-        <button class="resPass">Reset password</button>
         <button class="register" @click="registerUser">Register</button>
       </div>
     </div>
@@ -131,18 +130,16 @@ export default {
   display: grid;
   grid-template-rows: auto;
   grid-template-areas:
-    "signInText signInText signInText"
-    "mailBox mailBox mailBox"
-    "passBox passBox passBox"
-    "register resPass login";
+    "signInText  signInText"
+    "mailBox  mailBox"
+    "passBox  passBox"
+    "accountButtons accountButtons";
 }
 
 .accountButtons {
   display: flex;
-  text-align: center;
-  margin-left: 25%;
   padding: 4px;
-  
+  grid-area: accountButtons;
 }
 
 
@@ -191,18 +188,12 @@ button {
 
 .register {
   grid-area: register;
-  margin-left: auto;
-}
-
-.resPass {
-  grid-area: resPass;
-  margin-left: auto;
   margin-right: auto;
 }
 
 .login {
   grid-area: login;
-  margin-right: auto;
+  margin-left: auto;
 }
 
 button:active {

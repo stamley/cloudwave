@@ -18,16 +18,8 @@
       </div>
     </div>
     <div class="profile-actions">
-      <button @click="showChangeUsernameForm">Change Username</button>
-      <!-- <button @click="deleteAccount">Delete Account</button> -->
       <button @click="saveMusic">Save Music</button>
       <button @click="logout">Logout</button>
-    </div>
-    <div v-if="showChangeUsername">
-      <form @submit.prevent="changeUsername">
-        <input type="text" v-model="newUsername" placeholder="New Username" id="newNameBox" />
-        <button type="submit" @click="changeAccountUserName">Save</button>
-      </form>
     </div>
   </div>
 </template>
@@ -45,7 +37,6 @@ export default {
   setup() {
     const router = useRouter();
     const user = ref(null);
-    const showChangeUsername = ref(false);
     const newUsername = ref("");
 
     onMounted(() => {
@@ -53,43 +44,6 @@ export default {
         user.value = currentUser;
       });
     });
-
-    const showChangeUsernameForm = () => {
-      showChangeUsername.value = !showChangeUsername.value;
-    };
-
-    const changeUsername = () => {
-      // if (newUsername.value) {
-      //   auth.currentUser
-      //     .updateProfile({
-      //       displayName: newUsername.value,
-      //     })
-      //     .then(() => {
-      //       console.log("Username changed successfully!");
-      //       newUsername.value = "";
-      //       showChangeUsername.value = false;
-      //     })
-      //     .catch((error) => {
-      //       console.error(error);
-      //     });
-      // } else {
-      //   console.error("New username is required!");
-      // }
-    };
-    // const deleteAccount = () => {
-    //   if (confirm("Are you sure you want to delete your account?")) {
-    //     user.value
-    //       .delete()
-    //       .then(() => {
-    //         console.log("Account deleted successfully!");
-    //       })
-    //       .catch((error) => {
-    //         console.error(error);
-    //       });
-    //   } else {
-    //     console.log("Account deletion cancelled!");
-    //   }
-    // };
 
     const saveMusic = () => {
       console.log("Music saved successfully!");
@@ -111,11 +65,7 @@ export default {
 
     return {
       user,
-      showChangeUsername,
       newUsername,
-      showChangeUsernameForm,
-      changeUsername,
-      // deleteAccount,
       saveMusic,
       logout,
     };
