@@ -85,7 +85,7 @@ export default {
   grid-template-areas:
     "title"
     "signInBox";
-  width: 65%;
+  width: 70%;
   margin-right: auto;
   margin-left: auto;
   color: rgb(178, 197, 237);
@@ -101,6 +101,7 @@ export default {
   width: 40%;
   background-color: rgb(178, 197, 237);
   color: rgb(55, 96, 211);
+  border-radius: 6px;
   margin-right: auto;
   margin-left: auto;
   margin-bottom: 10px;
