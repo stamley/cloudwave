@@ -37,13 +37,16 @@ const updateUserData = () => {
         Mid: getselectedMid().value,
         Treble: getselectedTreble().value,
         SynthPassword: synthPass,
-      })
-        .then(() => {
-          console.log("User data updated successfully");
-        })
-        .catch((error) => {
-          console.error("Error updating user data:", error);
-        });
+      });
+      // .then(() => {
+      //   console.log("User data updated successfully");
+      // })
+      // .catch((error) => {
+      //   console.error("Error updating user data:", error);
+      // });
+      set(ref(db, REF + MAC + "/CurrentUser"), {
+        User: user.uid,
+      });
     }
   });
 };
