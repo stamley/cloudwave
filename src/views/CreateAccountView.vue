@@ -21,7 +21,7 @@
 </template>
 <script>
 import { ref } from "vue";
-import { auth, createUserWithEmailAndPassword, setSynthPass } from "../firebaseModel";
+import { auth, createUserWithEmailAndPassword } from "../firebaseModel";
 import { useRouter } from "vue-router";
 import { loggedIn } from "../logedIn";
 
@@ -54,7 +54,6 @@ export default {
 
         loggedIn.value = true;
         router.push("/profile");
-        setSynthPass(document.getElementById("synthPass").value);
       } catch (error) {
         alert(error.message);
       }

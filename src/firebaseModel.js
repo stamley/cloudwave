@@ -13,10 +13,6 @@ import {
   getselectedTreble,
 } from "./components/selectedIndex";
 
-let synthPass = "";
-function setSynthPass(synthpass) {
-  synthPass = synthpass;
-}
 const app = initializeApp(firebaseConfig);
 
 const REF = "CloudWave/";
@@ -119,7 +115,6 @@ export {
   login,
   updateUserData,
   // setIndexValue,
-  setSynthPass,
   signOutCurrentUser,
   deleteCurrentUser,
 };
