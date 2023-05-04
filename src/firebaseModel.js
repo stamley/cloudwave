@@ -28,7 +28,7 @@ const auth = getAuth(app);
 const updateUserData = () => {
   auth.onAuthStateChanged((user) => {
     if (user) {
-      const userRef = ref(db, REF + MAC + "users/" + user.uid);
+      const userRef = ref(db, REF + MAC + "/users/" + user.uid);
       set(userRef, {
         name: user.displayName,
         email: user.email,
@@ -37,13 +37,16 @@ const updateUserData = () => {
         Mid: getselectedMid().value,
         Treble: getselectedTreble().value,
         SynthPassword: synthPass,
-      })
-        .then(() => {
-          console.log("User data updated successfully");
-        })
-        .catch((error) => {
-          console.error("Error updating user data:", error);
-        });
+      });
+      // .then(() => {
+      //   console.log("User data updated successfully");
+      // })
+      // .catch((error) => {
+      //   console.error("Error updating user data:", error);
+      // });
+      set(ref(db, REF + MAC + "/CurrentUser"), {
+        User: user.uid,
+      });
     }
   });
 };
