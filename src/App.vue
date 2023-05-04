@@ -41,9 +41,11 @@ export default {
   /*height: 100vh;*/
   /*border: solid;*/
   background-color: rgb(13, 24, 48);
+  
 }
 html{
   background-color: rgb(13, 24, 48);
+  overflow-x: hidden;
 }
 .profile-presenter {
   display: none;

@@ -10,21 +10,22 @@
         class="passBox"
         v-model="password"
       />
+      <div class="accountButtons">
+        <button class="login" @click="loginUser">Login</button>
+        <button class="resPass">Reset password</button>
+        <button class="register" @click="registerUser">Register</button>
+      </div>
     </div>
-    <div class="accountButtons">
-      <button class="login" @click="loginUser">Login</button>
-      <button class="resPass">Reset password</button>
-      <button class="register" @click="registerUser">Register</button>
-      <footer>
-        Forgot your password? Click
-        <router-link to="/forgot-account">Here</router-link>
-      </footer>
-    </div>
+    
     <!--<img
       src="https://i.gifer.com/origin/0d/0d6cf5b4980702758a616a14bed86e3a_w200.gif"
       alt="clouds gif"
       class="clouds"
     />-->
+    <div class="footer">
+      Forgot your password? Click
+      <router-link class="link" to="/forgot-account">Here</router-link>
+    </div>
     <div class="noAccountBox">
       <!--<p>Do you not have an account?</p>
       <p>
@@ -41,6 +42,7 @@
       /></a>
     </div>
   </div>
+  
 </template>
 
 <script>
@@ -84,7 +86,18 @@ export default {
 </script>
 
 <style scoped>
-
+.link{
+  color: rgb(55, 96, 211);
+}
+.footer{
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Sporting", Helvetica;
+  font-size: 12px;
+  border-color: rgb(55, 96, 211);
+  color:rgb(178, 197, 237);
+}
 .container {
   font-family: "Sporting", Helvetica;
   display: grid;
@@ -106,16 +119,16 @@ export default {
 }
 
 .signInBox {
-  width: 40%;
+  width: auto;
   background-color: rgb(178, 197, 237);
   color: rgb(55, 96, 211);
   border-radius: 6px;
+  padding: 10px;
   margin-right: auto;
   margin-left: auto;
   margin-bottom: 10px;
   grid-area: signInBox;
   display: grid;
-  grid-template-columns: auto;
   grid-template-rows: auto;
   grid-template-areas:
     "signInText signInText signInText"
@@ -125,11 +138,11 @@ export default {
 }
 
 .accountButtons {
-  width: auto;
   display: flex;
-  margin-right: auto;
-  margin-left: auto; 
+  text-align: center;
+  margin-left: 25%;
   padding: 4px;
+  
 }
 
 
@@ -140,11 +153,13 @@ export default {
 }
 
 input {
-  width: 100px;
+  width: 60%;
   background-color: rgb(178, 197, 237);
   border-radius: 3px;
   font-family: "Sporting", Helvetica;
   font-size: 10px;
+  margin-top: 0%;
+  margin-bottom: 0px;
 }
 
 input:focus {
@@ -153,7 +168,7 @@ input:focus {
 }
 
 .mailBox {
-  width: 30%;
+  width: 50%;
   height: 16px;
   grid-area: mailBox;
   margin-right: auto;
@@ -161,17 +176,17 @@ input:focus {
 }
 
 .passBox {
-  width: 30%;
+  width: 50%;
   height: 16px;
   grid-area: passBox;
   margin-right: auto;
   margin-left: auto;
-  margin-top: 20px;
   margin-bottom: 20px;
 }
 
 button {
   padding: 10px;
+  font-size: 13px;
 }
 
 .register {

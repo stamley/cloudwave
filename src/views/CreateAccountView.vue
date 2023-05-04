@@ -13,11 +13,12 @@
       <input type="password" placeholder="Synth Password" class="SyPassBox" v-model="synthPassword" />
 
       <button class="register" @click="registerUser">Register</button>
-      <footer>
-        Already registered? Log in
-        <router-link to="/login">Here</router-link>
-      </footer>
+      
     </div>
+  </div>
+  <div class="footer">
+    Already registered? Log in
+    <router-link to="/login">Here</router-link>
   </div>
 </template>
 <script>
@@ -77,6 +78,19 @@ export default {
 
 
 <style scoped>
+.link{
+  color: rgb(55, 96, 211);
+}
+.footer{
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  font-family: "Sporting", Helvetica;
+  font-size: 12px;
+  border-color: rgb(55, 96, 211);
+  color:rgb(178, 197, 237);
+}
 .container {
   display: grid;
   grid-template-columns: auto;
@@ -84,7 +98,7 @@ export default {
   grid-template-areas:
     "title"
     "signInBox";
-  width: 80%;
+  width: 60%;
   margin-right: auto;
   margin-left: auto;
   color: rgb(178, 197, 237);
@@ -94,10 +108,11 @@ export default {
   margin-top: 30px;
   grid-area: title;
   margin-bottom: 35px;
+  font-family: "Sporting", Helvetica;
 }
 
 .signInBox {
-  width: 50%;
+  width: 35%;
   margin-right: auto;
   margin-left: auto;
   grid-area: signInBox;
@@ -126,7 +141,7 @@ export default {
 }
 
 input {
-  width: 300px;
+  width: 60%;
   height: 15px;
   margin-left: auto;
   margin-right: auto;

@@ -59,7 +59,7 @@ export default {
   border-radius: 6px;
   padding: 50px;
   margin: 10px auto;
-  max-inline-size: 625px;
+  max-inline-size: 639px;
   font-family: "Sporting", Helvetica;
 /* 
   border: 3px solid whitesmoke;
