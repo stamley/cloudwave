@@ -28,7 +28,7 @@ const auth = getAuth(app);
 const updateUserData = () => {
   auth.onAuthStateChanged((user) => {
     if (user) {
-      const userRef = ref(db, REF + "users/" + user.uid);
+      const userRef = ref(db, REF + MAC + "users/" + user.uid);
       set(userRef, {
         name: document.getElementById("fullNameBox").value,
         email: user.email,
@@ -50,6 +50,15 @@ const updateUserData = () => {
     }
   });
 };
+
+// function getBaseValue() {
+//   onValue(
+//     ref(db, REF + MAC + "users/" + auth.currentUser.uid + "/Bass"),
+//     (snapshot) => {
+//       return snapshot.val();
+//     }
+//   );
+// }
 
 auth.onIdTokenChanged(() => {
   set(ref(db, REF + MAC + "/CurrentUser"), {
@@ -115,4 +124,5 @@ export {
   setSynthPass,
   signOutCurrentUser,
   deleteCurrentUser,
+  // getBaseValue,
 };

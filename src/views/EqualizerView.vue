@@ -11,11 +11,12 @@
 <script>
 import { setselectedBass, getselectedBass, setselectedMid, getselectedMid, setselectedTreble, getselectedTreble } from "../components/selectedIndex.js";
 import { updateUserData } from "../firebaseModel.js";
+// import { getBaseValue } from "../firebaseModel.js";
 export default {
   data() {
     return {
       sliders: [
-        { name: "bass", label: "Bass", value: 0 },
+        { name: "bass", label: "Bass", value: 1 },
         { name: "midrange", label: "Midrange", value: 0 },
         { name: "treble", label: "Treble", value: 0 },
 
