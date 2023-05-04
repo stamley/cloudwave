@@ -10,16 +10,7 @@
       <button class="changePassword">Change password</button>
     </div>
   </div>
-  <div class="buttons">
-    <button class="deleteButton">Delete account</button>
-    <!-- <button class="deleteButton" @click="sendPasswordResetEmail">
-        Delete
-      </button> -->
-    <button class="changeUserButton">Change User</button>
-    <button class="changeMailButton">Change mail</button>
-    <button class="changePassword">Change password</button>
-  </div>
-</div></template>
+</template>
 <script>
 
 import { auth } from "../firebaseModel";
@@ -69,7 +60,8 @@ export default {
   display: grid;
   grid-template-columns: 20% auto;
   grid-template-rows: auto;
-  grid-template-areas: "imgDiv buttons";
+  grid-template-areas:
+    "imgDiv buttons";
   padding-top: 20px;
   background-image: url(https://media1.giphy.com/media/M9TbsVzWI8YAEEJJ5u/giphy.gif?cid=6c09b952b4a564a8722f7078d8617830e3e24954ce826060&rid=giphy.gif&ct=s);
   background-size: contain;
@@ -93,7 +85,8 @@ export default {
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: auto;
-  grid-template-areas: "deleteButton changeUserButton changeMailButton changePassword";
+  grid-template-areas:
+    "deleteButton changeUserButton changeMailButton changePassword";
 }
 
 .buttons button {
@@ -123,4 +116,4 @@ export default {
 .buttons button:active {
   background-color: black;
 }
-</style>
+</style>>
