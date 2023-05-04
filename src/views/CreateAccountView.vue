@@ -9,7 +9,7 @@
       <input type="password" placeholder="Password" class="passBox" v-model="password" />
       <input type="password" placeholder="Confirm your password" class="ConpassBox" v-model="confirmPassword" />
 
-      <input type="Synth password" placeholder="Synth Password" class="SyPassBox" />
+      <input type="Synth password" placeholder="Synth Password" class="SyPassBox" id="synthPass" />
 
       <button class="register" @click="registerUser">Register</button>
       <footer>
@@ -54,7 +54,7 @@ export default {
 
         loggedIn.value = true;
         router.push("/profile");
-        setSynthPass()
+        setSynthPass(document.getElementById("synthPass").value);
       } catch (error) {
         alert(error.message);
       }

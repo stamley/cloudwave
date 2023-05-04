@@ -19,8 +19,8 @@
     </div>
     <div v-if="showChangeUsername">
       <form @submit.prevent="changeUsername">
-        <input type="text" v-model="newUsername" placeholder="New Username" />
-        <button type="submit">Save</button>
+        <input type="text" v-model="newUsername" placeholder="New Username" id="newNameBox" />
+        <button type="submit" @click="changeAccountUserName">Save</button>
       </form>
     </div>
   </div>
@@ -53,22 +53,22 @@ export default {
     };
 
     const changeUsername = () => {
-      if (newUsername.value) {
-        auth.currentUser
-          .updateProfile({
-            displayName: newUsername.value,
-          })
-          .then(() => {
-            console.log("Username changed successfully!");
-            newUsername.value = "";
-            showChangeUsername.value = false;
-          })
-          .catch((error) => {
-            console.error(error);
-          });
-      } else {
-        console.error("New username is required!");
-      }
+      // if (newUsername.value) {
+      //   auth.currentUser
+      //     .updateProfile({
+      //       displayName: newUsername.value,
+      //     })
+      //     .then(() => {
+      //       console.log("Username changed successfully!");
+      //       newUsername.value = "";
+      //       showChangeUsername.value = false;
+      //     })
+      //     .catch((error) => {
+      //       console.error(error);
+      //     });
+      // } else {
+      //   console.error("New username is required!");
+      // }
     };
     // const deleteAccount = () => {
     //   if (confirm("Are you sure you want to delete your account?")) {
