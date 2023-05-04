@@ -20,7 +20,7 @@ function setSynthPass(synthpass) {
 const app = initializeApp(firebaseConfig);
 
 const REF = "CloudWave/";
-const MAC = "dc:a6:32:b4:da:a5";
+const MAC = "dc:a6:32:b4:da:a5/";
 
 const db = getDatabase(app);
 const auth = getAuth(app);
@@ -28,7 +28,7 @@ const auth = getAuth(app);
 const updateUserData = () => {
   auth.onAuthStateChanged((user) => {
     if (user) {
-      const userRef = ref(db, REF + MAC + "/users/" + user.uid);
+      const userRef = ref(db, REF + MAC + "users/" + user.uid);
       set(userRef, {
         name: user.displayName,
         email: user.email,
@@ -50,6 +50,22 @@ const updateUserData = () => {
     }
   });
 };
+
+auth.onIdTokenChanged(() => {
+  set(ref(db, REF + MAC + "/CurrentUser"), {
+    User: auth.currentUser.uid,
+  });
+});
+
+function signOutCurrentUser() {
+  set(ref(db, REF + MAC + "/CurrentUser"), {
+    User: "",
+  });
+}
+
+function deleteCurrentUser() {
+  set(ref(db, REF + MAC + "users/" + auth.currentUser.uid), null);
+}
 
 function save() {
   const name = document.getElementById("name").value;
@@ -97,4 +113,6 @@ export {
   login,
   updateUserData,
   setSynthPass,
+  signOutCurrentUser,
+  deleteCurrentUser,
 };

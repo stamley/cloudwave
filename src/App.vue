@@ -16,8 +16,7 @@
 // import ProfileActionPresenter from "./presenters/ProfileActionPresenter.vue";
 import ProfilePresenter from "./presenters/ProfilePresenter.vue";
 // import router from "./router";
-import { loggedIn } from "./logedIn";
-console.log(loggedIn);
+
 export default {
   name: "App",
   components: {
@@ -34,7 +33,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: white;
-  height: 100vh;
+  min-height: 100vh;
   background-color: rgb(34, 34, 34);
 }
 .profile-presenter {
