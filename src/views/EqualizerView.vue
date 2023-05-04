@@ -1,36 +1,60 @@
 <template>
   <div class="equalizer">
     <div v-for="slider in sliders" :key="slider.name" class="slider">
-      <input type="range" v-model="slider.value" min="0" max="100" step="1" />
+
+      <input type="range" v-model="slider.value" min="-12" max="12" step="1" @input="updateSelectedIndex" />
       <div class="slider-value">{{ slider.label }}: {{ slider.value }}</div>
     </div>
   </div>
 </template>
 
 <script>
+import { setselectedBass, getselectedBass, setselectedMid, getselectedMid, setselectedTreble, getselectedTreble } from "../components/selectedIndex.js";
+import { updateUserData } from "../firebaseModel.js";
 export default {
   data() {
     return {
       sliders: [
-        { name: "volume", label: "Volume", value: 50 },
-        { name: "bass", label: "Bass", value: 50 },
-        { name: "treble", label: "Treble", value: 50 },
-        { name: "midrange", label: "Midrange", value: 50 },
-        { name: "balance", label: "Balance", value: 50 },
+        { name: "bass", label: "Bass", value: 0 },
+        { name: "midrange", label: "Midrange", value: 0 },
+        { name: "treble", label: "Treble", value: 0 },
+
       ],
     };
   },
+  methods: {
+    updateSelectedIndex() {
+      setselectedBass(this.sliders[0].value)
+      getselectedBass()
+      setselectedMid(this.sliders[1].value)
+      getselectedMid()
+      setselectedTreble(this.sliders[2].value)
+      getselectedTreble()
+      updateUserData();
+    }
+
+  }
 };
 </script>
 
 <style scoped>
-.equalizer {
+/* .equalizer {
   display: flex;
   align-items: center;
   justify-content: center;
   border: 3px solid whitesmoke;
   border-radius: 20px;
   padding: 50px;
+  margin: 10px auto;
+  max-inline-size: 625px;
+} */
+.equalizer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid whitesmoke;
+  border-radius: 20px;
+  padding: 30px;
   margin: 10px auto;
   max-inline-size: 625px;
 }

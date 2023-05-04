@@ -4,12 +4,7 @@
     <div class="signInBox">
       <p class="signInText">Enter your account details below</p>
       <input type="email" placeholder="Email" class="mailBox" v-model="email" />
-      <input
-        type="password"
-        placeholder="Password"
-        class="passBox"
-        v-model="password"
-      />
+      <input type="password" placeholder="Password" class="passBox" v-model="password" />
       <button class="login" @click="loginUser">Login</button>
       <button class="resPass">Reset password</button>
       <button class="register" @click="registerUser">Register</button>
@@ -18,22 +13,15 @@
         <router-link to="/forgot-account">Here</router-link>
       </footer>
     </div>
-    <img
-      src="https://i.gifer.com/origin/0d/0d6cf5b4980702758a616a14bed86e3a_w200.gif"
-      alt="clouds gif"
-      class="clouds"
-    />
+    <img src="https://i.gifer.com/origin/0d/0d6cf5b4980702758a616a14bed86e3a_w200.gif" alt="clouds gif" class="clouds" />
     <div class="noAccountBox">
       <p>Do you not have an account?</p>
       <p>
         Quickly, click on the sad cloud to make an account and make him happy!
       </p>
-      <a @click="registerUser"
-        ><img
+      <a @click="registerUser"><img
           src="https://media2.giphy.com/media/QBdwtKJMQ90euUGQ08/giphy.gif?cid=6c09b952yhzumvelezjr9cgfgkpp3ovbophw6hfo3owp1298&rid=giphy.gif&ct=s"
-          alt="sad cloud"
-          class="sadCloud"
-      /></a>
+          alt="sad cloud" class="sadCloud" /></a>
     </div>
   </div>
 </template>
