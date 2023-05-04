@@ -16,7 +16,7 @@ export default {
   data() {
     return {
       sliders: [
-        { name: "bass", label: "Bass", value: 1 },
+        { name: "bass", label: "Bass", value: 0 },
         { name: "midrange", label: "Midrange", value: 0 },
         { name: "treble", label: "Treble", value: 0 },
 
@@ -32,6 +32,9 @@ export default {
       setselectedTreble(this.sliders[2].value)
       getselectedTreble()
       updateUserData();
+      // setBaseValue(this.sliders[0].value)
+      // setMidValue(this.sliders[1].value)
+      // setTrebleValue(this.sliders[2].value)
     }
 
   }

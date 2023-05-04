@@ -4,12 +4,12 @@
     <div class="signInBox">
       <p class="signInText">Fill in your details below</p>
 
-      <input type="text" placeholder="Full Name" class="nameBox" v-model="fullName" />
+      <input type="text" placeholder="Full Name" class="nameBox" v-model="fullName" id="fullNameBox" />
       <input type="email" placeholder="Email" required class="mailBox" v-model="email" />
       <input type="password" placeholder="Password" class="passBox" v-model="password" />
       <input type="password" placeholder="Confirm your password" class="ConpassBox" v-model="confirmPassword" />
 
-      <input type="password" placeholder="Synth Password" class="SyPassBox" v-model="synthPassword" />
+      <input type="Synth password" placeholder="Synth Password" class="SyPassBox" id="synthPass" />
 
       <button class="register" @click="registerUser">Register</button>
       <footer>
@@ -33,7 +33,6 @@ export default {
     const email = ref("");
     const password = ref("");
     const confirmPassword = ref("");
-    const synthPassword = ref("");
 
     const registerUser = async () => {
       if (password.value !== confirmPassword.value) {
@@ -53,9 +52,9 @@ export default {
           });
         }
 
-        await setSynthPass(synthPassword.value);
         loggedIn.value = true;
         router.push("/profile");
+        setSynthPass(document.getElementById("synthPass").value);
       } catch (error) {
         alert(error.message);
       }
@@ -66,14 +65,12 @@ export default {
       email,
       password,
       confirmPassword,
-      synthPassword,
       registerUser,
       loggedIn,
     };
   },
 };
 </script>
-
 
 <style scoped>
 .container {

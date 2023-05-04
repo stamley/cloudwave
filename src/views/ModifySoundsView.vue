@@ -15,7 +15,7 @@ import { updateUserData } from "../firebaseModel.js";
 export default {
   data() {
     return {
-      selectedInstrument: "",
+      selectedInstrument: "Piano",
       instrumentOptions: [
         "Piano",
         "Guitar",
@@ -33,6 +33,7 @@ export default {
       const index = this.instrumentOptions.indexOf(this.selectedInstrument) + 1;
       setSelectedIndex(index);
       getSelectedIndex();
+      // setIndexValue(index)
       updateUserData();
       console.log(`You chose ${this.selectedInstrument} with index ${index}`);
     },
