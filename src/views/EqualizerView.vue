@@ -31,6 +31,9 @@ export default {
       setselectedTreble(this.sliders[2].value)
       getselectedTreble()
       updateUserData();
+      // setBaseValue(this.sliders[0].value)
+      // setMidValue(this.sliders[1].value)
+      // setTrebleValue(this.sliders[2].value)
     }
 
   }

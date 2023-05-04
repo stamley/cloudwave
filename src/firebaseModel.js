@@ -25,29 +25,50 @@ const MAC = "dc:a6:32:b4:da:a5/";
 const db = getDatabase(app);
 const auth = getAuth(app);
 
+// const updateUserData = () => {
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    const userRef = ref(db, REF + MAC + "users/" + user.uid);
+    set(userRef, {
+      name: user.displayName,
+      email: user.email,
+      index: 1,
+      Bass: 0,
+      Mid: 0,
+      Treble: 0,
+      SynthPassword: synthPass,
+    });
+    // .then(() => {
+    //   console.log("User data updated successfully");
+    // })
+    // .catch((error) => {
+    //   console.error("Error updating user data:", error);
+    // });
+    set(ref(db, REF + MAC + "/CurrentUser"), {
+      User: user.uid,
+    });
+  }
+});
+// };
 const updateUserData = () => {
-  auth.onAuthStateChanged((user) => {
-    if (user) {
-      const userRef = ref(db, REF + MAC + "users/" + user.uid);
-      set(userRef, {
-        name: user.displayName,
-        email: user.email,
-        index: getSelectedIndex().value,
-        Bass: getselectedBass().value,
-        Mid: getselectedMid().value,
-        Treble: getselectedTreble().value,
-        SynthPassword: synthPass,
-      });
-      // .then(() => {
-      //   console.log("User data updated successfully");
-      // })
-      // .catch((error) => {
-      //   console.error("Error updating user data:", error);
-      // });
-      set(ref(db, REF + MAC + "/CurrentUser"), {
-        User: user.uid,
-      });
-    }
+  const userRef = ref(db, REF + MAC + "users/" + auth.currentUser.uid);
+  set(userRef, {
+    name: auth.currentUser.displayName,
+    email: auth.currentUser.email,
+    index: getSelectedIndex().value,
+    Bass: getselectedBass().value,
+    Mid: getselectedMid().value,
+    Treble: getselectedTreble().value,
+    SynthPassword: synthPass,
+  });
+  // .then(() => {
+  //   console.log("User data updated successfully");
+  // })
+  // .catch((error) => {
+  //   console.error("Error updating user data:", error);
+  // });
+  set(ref(db, REF + MAC + "/CurrentUser"), {
+    User: auth.currentUser.uid,
   });
 };
 
@@ -56,6 +77,57 @@ auth.onIdTokenChanged(() => {
     User: auth.currentUser.uid,
   });
 });
+
+// function setIndexValue(value) {
+//   const userRef = ref(db, REF + MAC + "users/" + auth.currentUser.uid);
+//   set(userRef, {
+//     name: auth.currentUser.displayName,
+//     email: auth.currentUser.email,
+//     index: value,
+//     Bass: getselectedBass().value,
+//     Mid: getselectedMid().value,
+//     Treble: getselectedTreble().value,
+//     SynthPassword: synthPass,
+//   });
+// }
+// function setBaseValue(value) {
+//   const userRef = ref(db, REF + MAC + "users/" + auth.currentUser.uid);
+//   set(userRef, {
+//     name: auth.currentUser.displayName,
+//     email: auth.currentUser.email,
+//     index: getSelectedIndex().value,
+//     Bass: value,
+//     Mid: getselectedMid().value,
+//     Treble: getselectedTreble().value,
+//     SynthPassword: synthPass,
+//   });
+// }
+
+// function setMidValue(value) {
+//   const userRef = ref(db, REF + MAC + "users/" + auth.currentUser.uid);
+//   set(userRef, {
+//     name: auth.currentUser.displayName,
+//     email: auth.currentUser.email,
+//     index: getSelectedIndex().value,
+//     Bass: getselectedBass().value,
+//     Mid: value,
+//     Treble: getselectedTreble().value,
+//     SynthPassword: synthPass,
+//   });
+// }
+
+// function setTrebleValue(value) {
+//   const userRef = ref(db, REF + MAC + "users/" + auth.currentUser.uid);
+//   set(userRef, {
+//     name: auth.currentUser.displayName,
+//     email: auth.currentUser.email,
+//     index: getSelectedIndex().value,
+//     Bass: getselectedBass().value,
+//     Mid: getselectedMid().value,
+//     Treble: value,
+//     SynthPassword: synthPass,
+//   });
+// }
 
 function signOutCurrentUser() {
   set(ref(db, REF + MAC + "/CurrentUser"), {
@@ -112,7 +184,11 @@ export {
   getAuth,
   login,
   updateUserData,
+  // setIndexValue,
   setSynthPass,
   signOutCurrentUser,
   deleteCurrentUser,
+  // setBaseValue,
+  // setMidValue,
+  // setTrebleValue,
 };
