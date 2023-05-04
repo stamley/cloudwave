@@ -1,12 +1,14 @@
 <template>
   <div class="profile-box">
     <div class="profile-details">
+
       <img
         src="../assets/Default-Profile.png"
         alt="Profile picture"
         width="100"
         height="100"
       />
+
       <div class="welcome">
         <h2 v-if="user">Welcome {{ user.displayName }}</h2>
         <h2 v-else>Welcome!</h2>
@@ -23,8 +25,8 @@
     </div>
     <div v-if="showChangeUsername">
       <form @submit.prevent="changeUsername">
-        <input type="text" v-model="newUsername" placeholder="New Username" />
-        <button type="submit">Save</button>
+        <input type="text" v-model="newUsername" placeholder="New Username" id="newNameBox" />
+        <button type="submit" @click="changeAccountUserName">Save</button>
       </form>
     </div>
   </div>
@@ -34,8 +36,9 @@
 import { ref, onMounted } from "vue";
 import { auth } from "../firebaseModel";
 import { useRouter } from "vue-router";
-import {loggedIn} from "../logedIn";
-import {signOutCurrentUser} from "../firebaseModel";
+import { loggedIn } from "../logedIn";
+import { signOutCurrentUser } from "../firebaseModel";
+import { setSelectedIndex } from "../components/selectedIndex"
 
 export default {
   name: "ProfileboxView",
@@ -56,22 +59,22 @@ export default {
     };
 
     const changeUsername = () => {
-      if (newUsername.value) {
-        auth.currentUser
-          .updateProfile({
-            displayName: newUsername.value,
-          })
-          .then(() => {
-            console.log("Username changed successfully!");
-            newUsername.value = "";
-            showChangeUsername.value = false;
-          })
-          .catch((error) => {
-            console.error(error);
-          });
-      } else {
-        console.error("New username is required!");
-      }
+      // if (newUsername.value) {
+      //   auth.currentUser
+      //     .updateProfile({
+      //       displayName: newUsername.value,
+      //     })
+      //     .then(() => {
+      //       console.log("Username changed successfully!");
+      //       newUsername.value = "";
+      //       showChangeUsername.value = false;
+      //     })
+      //     .catch((error) => {
+      //       console.error(error);
+      //     });
+      // } else {
+      //   console.error("New username is required!");
+      // }
     };
     // const deleteAccount = () => {
     //   if (confirm("Are you sure you want to delete your account?")) {
@@ -98,6 +101,7 @@ export default {
           console.log("Logged out successfully!");
           signOutCurrentUser();
           loggedIn.value = false;
+          setSelectedIndex(1);
           router.push("/login");
         })
         .catch((error) => {

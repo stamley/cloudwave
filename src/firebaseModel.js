@@ -5,7 +5,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { set, ref, getDatabase } from "firebase/database";
+import { set, ref, getDatabase, update } from "firebase/database";
 import {
   getSelectedIndex,
   getselectedBass,
@@ -13,10 +13,6 @@ import {
   getselectedTreble,
 } from "./components/selectedIndex";
 
-let synthPass = "";
-function setSynthPass(synthpass) {
-  synthPass = synthpass;
-}
 const app = initializeApp(firebaseConfig);
 
 const REF = "CloudWave/";
@@ -25,29 +21,35 @@ const MAC = "dc:a6:32:b4:da:a5/";
 const db = getDatabase(app);
 const auth = getAuth(app);
 
+// const updateUserData = () => {
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    const userRef = ref(db, REF + MAC + "users/" + user.uid);
+    set(userRef, {
+      name: document.getElementById("fullNameBox").value,
+      email: user.email,
+      index: 1,
+      Bass: 0,
+      Mid: 0,
+      Treble: 0,
+      SynthPassword: document.getElementById("synthPass").value,
+    });
+    set(ref(db, REF + MAC + "/CurrentUser"), {
+      User: user.uid,
+    });
+  }
+});
+// };
 const updateUserData = () => {
-  auth.onAuthStateChanged((user) => {
-    if (user) {
-      const userRef = ref(db, REF + "users/" + user.uid);
-      set(userRef, {
-        name: document.getElementById("fullNameBox").value,
-        email: user.email,
-        index: getSelectedIndex().value,
-        Bass: getselectedBass().value,
-        Mid: getselectedMid().value,
-        Treble: getselectedTreble().value,
-        SynthPassword: synthPass,
-      });
-      // .then(() => {
-      //   console.log("User data updated successfully");
-      // })
-      // .catch((error) => {
-      //   console.error("Error updating user data:", error);
-      // });
-      set(ref(db, REF + MAC + "/CurrentUser"), {
-        User: user.uid,
-      });
-    }
+  const userRef = ref(db, REF + MAC + "users/" + auth.currentUser.uid);
+  update(userRef, {
+    index: getSelectedIndex().value,
+    Bass: getselectedBass().value,
+    Mid: getselectedMid().value,
+    Treble: getselectedTreble().value,
+  });
+  set(ref(db, REF + MAC + "/CurrentUser"), {
+    User: auth.currentUser.uid,
   });
 };
 
@@ -112,7 +114,7 @@ export {
   getAuth,
   login,
   updateUserData,
-  setSynthPass,
+  // setIndexValue,
   signOutCurrentUser,
   deleteCurrentUser,
 };

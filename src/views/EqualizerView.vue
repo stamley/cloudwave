@@ -11,6 +11,7 @@
 <script>
 import { setselectedBass, getselectedBass, setselectedMid, getselectedMid, setselectedTreble, getselectedTreble } from "../components/selectedIndex.js";
 import { updateUserData } from "../firebaseModel.js";
+// import { getBaseValue } from "../firebaseModel.js";
 export default {
   data() {
     return {
@@ -31,6 +32,9 @@ export default {
       setselectedTreble(this.sliders[2].value)
       getselectedTreble()
       updateUserData();
+      // setBaseValue(this.sliders[0].value)
+      // setMidValue(this.sliders[1].value)
+      // setTrebleValue(this.sliders[2].value)
     }
 
   }
