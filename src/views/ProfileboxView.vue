@@ -1,12 +1,8 @@
 <template>
   <div class="profile-box">
     <div class="profile-details">
-      <img
-        src="https://ichef.bbci.co.uk/news/999/cpsprodpb/15951/production/_117310488_16.jpg"
-        alt="Profile picture"
-        width="100"
-        height="100"
-      />
+      <img src="https://ichef.bbci.co.uk/news/999/cpsprodpb/15951/production/_117310488_16.jpg" alt="Profile picture"
+        width="100" height="100" />
       <div class="welcome">
         <h2 v-if="user">Welcome {{ user.displayName }}</h2>
         <h2 v-else>Welcome!</h2>
@@ -34,8 +30,9 @@
 import { ref, onMounted } from "vue";
 import { auth } from "../firebaseModel";
 import { useRouter } from "vue-router";
-import {loggedIn} from "../logedIn";
-import {signOutCurrentUser} from "../firebaseModel";
+import { loggedIn } from "../logedIn";
+import { signOutCurrentUser } from "../firebaseModel";
+import { setSelectedIndex } from "../components/selectedIndex"
 
 export default {
   name: "ProfileboxView",
@@ -98,6 +95,7 @@ export default {
           console.log("Logged out successfully!");
           signOutCurrentUser();
           loggedIn.value = false;
+          setSelectedIndex(1);
           router.push("/login");
         })
         .catch((error) => {

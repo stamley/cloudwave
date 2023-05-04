@@ -15,7 +15,7 @@ import { updateUserData } from "../firebaseModel.js";
 export default {
   data() {
     return {
-      selectedInstrument: "",
+      selectedInstrument: "Piano",
       instrumentOptions: [
         "Piano",
         "Guitar",
