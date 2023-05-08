@@ -2,12 +2,7 @@
   <div class="profile-box">
     <div class="profile-details">
 
-      <img
-        src="../assets/Default-Profile.png"
-        alt="Profile picture"
-        width="100"
-        height="100"
-      />
+      <img src="../assets/Default-Profile.png" alt="Profile picture" width="100" height="100" />
 
       <div class="welcome">
         <h2 v-if="user">Welcome {{ user.displayName }}</h2>
@@ -123,7 +118,8 @@ input {
   font-family: "Sporting", Helvetica;
   font-size: 10px;
 }
-::placeholder{
+
+::placeholder {
   color: rgb(55, 96, 211);
   border-color: rgb(55, 96, 211);
 }
