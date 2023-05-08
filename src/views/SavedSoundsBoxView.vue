@@ -1,31 +1,47 @@
 <template>
-    <div class = "box-container">
+    <div class="box-container">
         <div class="sound-box">
             <div class="sound-scroll-box">
-                <div v-for="sound in sounds" :key="sound.id">
-                    {{sound}}
+                <!-- <div v-for="sound in sounds" :key="sound.id">
+                    {{ sound }} -->
+                <div v-for="sound in musicList" :key="sound.name" @click="logName(sound)">
+                    {{ sound.name }}
                 </div>
-            </div>        
-            
+            </div>
+
             <div>
                 <button>Remove</button>
                 <button>Modify</button>
             </div>
         </div>
-        
-        
+
+
     </div>
-    
 </template>
 
 <script>
-export default{
+import { getMusicList } from "@/firebaseModel.js";
+
+export default {
     name: "SavedSoundsBoxView",
-    
-    data(){
+
+    data() {
         return {
-            sounds: ["'Piano' created 2023-03","'Guitar' created 2023-04","'Flute' created 2023-05", "'Drums' created 2023-06","'SawtoothSynth' created 2023-07","'SinewaveSynth' created 2023-08"]};
-    }
+            // sounds: ["'Piano' created 2023-03","'Guitar' created 2023-04","'Flute' created 2023-05", "'Drums' created 2023-06","'SawtoothSynth' created 2023-07","'SinewaveSynth' created 2023-08"]
+            musicList: [],
+        };
+
+    },
+    created() {
+        getMusicList().then((musicList) => {
+            this.musicList = musicList;
+        });
+    },
+    methods: {
+        logName(sound) {
+            console.log("you chose " + sound.name + " to listen");
+        },
+    },
 }
 </script>
 
@@ -45,7 +61,8 @@ export default{
     outline-width: 2px;
     /*-webkit-box-shadow: inset 0 0 3px     rgba(0,0,0,0.5); */
 }
-.sound-box{
+
+.sound-box {
     /*outline-style:ridge;*/
     /*outline-color: black;*/
     width: 700px;
@@ -60,7 +77,8 @@ export default{
     background-color: rgb(178, 197, 237);
     justify-content: center;
 }
-.sound-scroll-box{
+
+.sound-scroll-box {
     font-family: "Sporting", Helvetica;
     color: rgb(55, 96, 211);
     font-size: 15px;
@@ -71,14 +89,14 @@ export default{
     width: 70%;
     overflow: auto;
 }
-.box-container{
-    display: flex; 
+
+.box-container {
+    display: flex;
     justify-content: center;
-    
+
 }
 
-button{
+button {
     margin-left: 10px
 }
-
 </style>

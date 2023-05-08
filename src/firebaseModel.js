@@ -12,16 +12,39 @@ import {
   getselectedMid,
   getselectedTreble,
 } from "./components/selectedIndex";
+import {
+  getStorage,
+  listAll,
+  ref as storageRef,
+  // getDownloadURL,
+} from "firebase/storage";
 
 const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const auth = getAuth(app);
+const storage = getStorage(app);
 
 const REF = "CloudWave/";
 const MAC = "dc:a6:32:b4:da:a5/";
 
-const db = getDatabase(app);
-const auth = getAuth(app);
+async function getMusicList() {
+  const listRef = storageRef(storage, "user1/sounds1");
+  const res = await listAll(listRef);
+  const musicList = await Promise.all(
+    res.items.map(async (itemRef) => {
+      const url = await itemRef.getDownloadURL;
+      return {
+        name: itemRef.name,
+        url,
+      };
+    })
+  );
 
-// const updateUserData = () => {
+  return musicList;
+}
+
+getMusicList().then((musicList) => console.log(musicList));
+
 auth.onAuthStateChanged((user) => {
   if (user) {
     const userRef = ref(db, REF + MAC + "users/" + user.uid);
@@ -39,7 +62,7 @@ auth.onAuthStateChanged((user) => {
     });
   }
 });
-// };
+
 const updateUserData = () => {
   const userRef = ref(db, REF + MAC + "users/" + auth.currentUser.uid);
   update(userRef, {
@@ -117,4 +140,5 @@ export {
   // setIndexValue,
   signOutCurrentUser,
   deleteCurrentUser,
+  getMusicList,
 };
