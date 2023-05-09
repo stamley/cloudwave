@@ -1,47 +1,3 @@
-<!-- <template>
-    <div class="box-container">
-        <div class="sound-box">
-            <div class="sound-scroll-box">
-                <div v-for="sound in musicList" :key="sound.name" @click="logName(sound)">
-                    {{ sound.name }}
-                </div>
-            </div>
-            <div>
-                <button>Remove</button>
-                <button>Modify</button>
-            </div>
-        </div>
-    </div>
-</template> -->
-
-<!-- <script>
-import { getMusicList } from "@/firebaseModel.js";
-
-export default {
-    name: "SavedSoundsBoxView",
-
-    data() {
-        return {
-            // sounds: ["'Piano' created 2023-03","'Guitar' created 2023-04","'Flute' created 2023-05", "'Drums' created 2023-06","'SawtoothSynth' created 2023-07","'SinewaveSynth' created 2023-08"]
-            musicList: [],
-        };
-
-    },
-    created() {
-        getMusicList().then((musicList) => {
-            this.musicList = musicList;
-        });
-    },
-    methods: {
-        logName(sound) {
-            console.log("you chose " + sound.name + " to listen");
-             url: "https://firebasestorage.googleapis.com/v0/b/cloudwave-test.appspot.com/o/user1%2Fsounds1%2FA%23.wav?alt=media&token=55a8bc91-eae6-4230-87c4-87b4dbc07797"
-        },
-    },
-}
-</script> -->
-
-
 <template>
     <div class="box-container">
         <div class="sound-box">
@@ -61,11 +17,12 @@ export default {
 
 <script>
 import { getMusicList } from "@/firebaseModel.js";
-
 export default {
     name: "SavedSoundsBoxView",
     data() {
         return {
+            // sounds: ["'Piano' created 2023-03", "'Guitar' created 2023-04", "'Flute' created 2023-05", "'Drums' created 2023-06", "'SawtoothSynth' created 2023-07", "'SinewaveSynth' created 2023-08"]
+
             musicList: [],
             audio: null
         };
@@ -75,6 +32,7 @@ export default {
             this.musicList = musicList;
         });
     },
+
     methods: {
         playMusic(url) {
             console.log("you chose " + url + " to listen");
@@ -87,7 +45,6 @@ export default {
     },
 }
 </script>
-
 
 <style scoped>
 ::-webkit-scrollbar {

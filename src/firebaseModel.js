@@ -30,7 +30,6 @@ const MAC = "dc:a6:32:b4:da:a5/";
 async function getMusicList() {
   const listRef = storageRef(storage, "user1/sounds1");
   const res = await listAll(listRef);
-  console.log("the listRef: " + listRef);
   const musicList = await Promise.all(
     res.items.map(async (itemRef) => {
       const url = await getDownloadURL(itemRef);
@@ -137,7 +136,6 @@ export {
   getAuth,
   login,
   updateUserData,
-  // setIndexValue,
   signOutCurrentUser,
   deleteCurrentUser,
   getMusicList,
