@@ -16,7 +16,7 @@ import {
   getStorage,
   listAll,
   ref as storageRef,
-  // getDownloadURL,
+  getDownloadURL,
 } from "firebase/storage";
 
 const app = initializeApp(firebaseConfig);
@@ -30,16 +30,16 @@ const MAC = "dc:a6:32:b4:da:a5/";
 async function getMusicList() {
   const listRef = storageRef(storage, "user1/sounds1");
   const res = await listAll(listRef);
+  console.log("the listRef: " + listRef);
   const musicList = await Promise.all(
     res.items.map(async (itemRef) => {
-      const url = await itemRef.getDownloadURL;
+      const url = await getDownloadURL(itemRef);
       return {
         name: itemRef.name,
-        url,
+        url: url,
       };
     })
   );
-
   return musicList;
 }
 
