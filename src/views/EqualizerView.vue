@@ -2,7 +2,7 @@
   <div class="equalizer">
     <div v-for="slider in sliders" :key="slider.name" class="slider">
 
-      <input type="range" v-model="slider.value" min="-12" max="12" step="1" @input="updateSelectedIndex" />
+      <input type="range" v-model="slider.value" min="1" max="100" step="1" @input="updateSelectedIndex" />
       <div class="slider-value">{{ slider.label }}: {{ slider.value }}</div>
     </div>
   </div>
@@ -16,9 +16,9 @@ export default {
   data() {
     return {
       sliders: [
-        { name: "bass", label: "Bass", value: 0 },
-        { name: "midrange", label: "Midrange", value: 0 },
-        { name: "treble", label: "Treble", value: 0 },
+        { name: "bass", label: "Bass", value: 15 },
+        { name: "midrange", label: "Midrange", value: 15 },
+        { name: "treble", label: "Treble", value: 15 },
 
       ],
     };

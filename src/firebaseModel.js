@@ -17,6 +17,8 @@ import {
   listAll,
   ref as storageRef,
   getDownloadURL,
+  uploadBytes,
+  deleteObject,
 } from "firebase/storage";
 
 const app = initializeApp(firebaseConfig);
@@ -27,9 +29,11 @@ const storage = getStorage(app);
 const REF = "CloudWave/";
 const MAC = "dc:a6:32:b4:da:a5/";
 
-async function getMusicList() {
-  const listRef = storageRef(storage, "user1/sounds1");
+async function getMusicList(userId) {
+  const listRef = storageRef(storage, `/users/${userId}/Saved_music/`);
+
   const res = await listAll(listRef);
+
   const musicList = await Promise.all(
     res.items.map(async (itemRef) => {
       const url = await getDownloadURL(itemRef);
@@ -39,26 +43,32 @@ async function getMusicList() {
       };
     })
   );
+
   return musicList;
 }
 
-getMusicList().then((musicList) => console.log(musicList));
-
 auth.onAuthStateChanged((user) => {
   if (user) {
+    // console.log("the userrrrrr " + user.uid);
+    // setuserUid(user.uid);
     const userRef = ref(db, REF + MAC + "users/" + user.uid);
     set(userRef, {
       name: document.getElementById("fullNameBox").value,
       email: user.email,
       index: 1,
-      Bass: 0,
-      Mid: 0,
-      Treble: 0,
+      Bass: 15,
+      Mid: 15,
+      Treble: 15,
       SynthPassword: document.getElementById("synthPass").value,
     });
+
     set(ref(db, REF + MAC + "/CurrentUser"), {
       User: user.uid,
     });
+    uploadBytes(
+      storageRef(storage, "users/" + user.uid + "/Saved_music/ChooseYourMusic"),
+      null
+    );
   }
 });
 
@@ -91,6 +101,28 @@ function deleteCurrentUser() {
   set(ref(db, REF + MAC + "users/" + auth.currentUser.uid), null);
 }
 
+function deleteCurrentUserStorage() {
+  const folderRef = storageRef(
+    storage,
+    "users/" + auth.currentUser.uid + "/Saved_music"
+  );
+  listAll(folderRef)
+    .then(function (result) {
+      result.items.forEach(function (fileRef) {
+        deleteObject(fileRef)
+          .then(function () {
+            console.log("File deleted successfully.");
+          })
+          .catch(function (error) {
+            console.error("Error deleting file:", error);
+          });
+      });
+    })
+    .catch(function (error) {
+      console.error("Error listing files in folder:", error);
+    });
+}
+
 function save() {
   const name = document.getElementById("name").value;
   const email = document.querySelector(".mailBox").value;
@@ -101,14 +133,23 @@ function save() {
     alert("Passwords do not match.");
     return;
   }
-
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
       alert("Successfully signed up!");
+      auth.onAuthStateChanged((user) => {
+        if (user) {
+          // user is signed in
+          console.log("createwitheamil user is " + user);
+        } else {
+          // user is signed out
+          console.log(" createwitheamil User is signed out");
+        }
+      });
       set(ref(db, REF + "users/" + user.uid), {
         name: name,
       });
+      getMusicList().then((musicList) => console.log(musicList));
     })
     .catch((error) => {
       alert(error.message);
@@ -139,4 +180,6 @@ export {
   signOutCurrentUser,
   deleteCurrentUser,
   getMusicList,
+  deleteCurrentUserStorage,
+  storage,
 };

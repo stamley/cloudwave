@@ -15,7 +15,7 @@
     </div>
 </template>
 
-<script>
+<!-- <script>
 import { getMusicList } from "@/firebaseModel.js";
 export default {
     name: "SavedSoundsBoxView",
@@ -44,7 +44,49 @@ export default {
         },
     },
 }
+</script> -->
+
+<script>
+import { getMusicList } from "@/firebaseModel.js";
+import { auth } from "@/firebaseModel.js"; // import auth from firebase.js
+
+export default {
+    name: "SavedSoundsBoxView",
+    data() {
+        return {
+            musicList: [],
+            audio: null
+        };
+    },
+    async created() {
+        try {
+            const user = await new Promise((resolve) => {
+                const unsubscribe = auth.onAuthStateChanged((user) => {
+                    resolve(user);
+                    unsubscribe();
+                });
+            });
+
+            const musicList = await getMusicList(user.uid);
+            this.musicList = musicList;
+        } catch (error) {
+            console.error(error);
+        }
+    },
+    methods: {
+        playMusic(url) {
+            console.log("you chose " + url + " to listen");
+            if (this.audio) {
+                this.audio.pause();
+            }
+            this.audio = new Audio(url);
+            this.audio.play();
+        }
+    }
+};
+
 </script>
+
 
 <style scoped>
 ::-webkit-scrollbar {
