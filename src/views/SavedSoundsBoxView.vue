@@ -9,7 +9,6 @@
 
             <div>
                 <button>Remove</button>
-                <button>Modify</button>
             </div>
         </div>
     </div>
@@ -46,7 +45,8 @@ export default {
 }
 </script> -->
 
-<script>
+
+<!-- <script>
 import { getMusicList } from "@/firebaseModel.js";
 import { auth } from "@/firebaseModel.js"; // import auth from firebase.js
 
@@ -85,6 +85,54 @@ export default {
     }
 };
 
+</script> -->
+
+<script>
+import { getMusicList } from "@/firebaseModel.js";
+import { auth, storage } from "@/firebaseModel.js";
+
+export default {
+    name: "SavedSoundsBoxView",
+    data() {
+        return {
+            musicList: [],
+            audio: null,
+        };
+    },
+    async created() {
+        try {
+            const user = await new Promise((resolve) => {
+                const unsubscribe = auth.onAuthStateChanged((user) => {
+                    resolve(user);
+                    unsubscribe();
+                });
+            });
+
+            const musicList = await getMusicList(user.uid);
+            this.musicList = musicList;
+
+            // Listen for changes in the storage bucket
+            storage.ref(`users/${user.uid}`).on("child_added", (snapshot) => {
+                const url = snapshot.downloadURL;
+                const title = snapshot.metadata.customMetadata.title;
+                const artist = snapshot.metadata.customMetadata.artist;
+                this.musicList.push({ url, title, artist });
+            });
+        } catch (error) {
+            console.error(error);
+        }
+    },
+    methods: {
+        playMusic(url) {
+            console.log("you chose " + url + " to listen");
+            if (this.audio) {
+                this.audio.pause();
+            }
+            this.audio = new Audio(url);
+            this.audio.play();
+        },
+    },
+};
 </script>
 
 

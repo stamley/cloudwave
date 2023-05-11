@@ -49,8 +49,6 @@ async function getMusicList(userId) {
 
 auth.onAuthStateChanged((user) => {
   if (user) {
-    // console.log("the userrrrrr " + user.uid);
-    // setuserUid(user.uid);
     const userRef = ref(db, REF + MAC + "users/" + user.uid);
     set(userRef, {
       name: document.getElementById("fullNameBox").value,
@@ -60,6 +58,11 @@ auth.onAuthStateChanged((user) => {
       Mid: 15,
       Treble: 15,
       SynthPassword: document.getElementById("synthPass").value,
+      statistics: {
+        lastLoginTime: new Date().toString(),
+        lastLogoutTime: "",
+        totalTimeUsed: 0,
+      },
     });
 
     set(ref(db, REF + MAC + "/CurrentUser"), {
@@ -69,6 +72,9 @@ auth.onAuthStateChanged((user) => {
       storageRef(storage, "users/" + user.uid + "/Saved_music/ChooseYourMusic"),
       null
     );
+    getMusicList(user.uid).then((musicList) => {
+      console.log("the music list for user " + user.uid, musicList);
+    });
   }
 });
 
@@ -92,9 +98,15 @@ auth.onIdTokenChanged(() => {
 });
 
 function signOutCurrentUser() {
+  // if (auth.currentUser) {
+  //   const userRef = ref(db, REF + MAC + "users/" + auth.currentUser.uid);
+  //   update(userRef, {
+  //     lastLogoutTime: new Date().toString(),
+  //   });
   set(ref(db, REF + MAC + "/CurrentUser"), {
     User: "",
   });
+  // }
 }
 
 function deleteCurrentUser() {
@@ -137,15 +149,6 @@ function save() {
     .then((userCredential) => {
       const user = userCredential.user;
       alert("Successfully signed up!");
-      auth.onAuthStateChanged((user) => {
-        if (user) {
-          // user is signed in
-          console.log("createwitheamil user is " + user);
-        } else {
-          // user is signed out
-          console.log(" createwitheamil User is signed out");
-        }
-      });
       set(ref(db, REF + "users/" + user.uid), {
         name: name,
       });
