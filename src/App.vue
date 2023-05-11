@@ -30,8 +30,9 @@ export default {
 @font-face {
   font-family: "Sporting";
   src: local("Sporting"),
-   url(./fonts/Sporting.ttf) format("truetype");
+    url(./fonts/Sporting.ttf) format("truetype");
 }
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -41,13 +42,14 @@ export default {
   /*height: 100vh;*/
   /*border: solid;*/
   background-color: rgb(13, 24, 48);
-  
+
 }
-html{
+
+html {
   background-color: rgb(13, 24, 48);
   overflow-x: hidden;
 }
+
 .profile-presenter {
   display: none;
-}
-</style>
+}</style>

@@ -13,7 +13,7 @@
 <script>
 
 import { auth } from "../firebaseModel";
-import { deleteCurrentUser } from "../firebaseModel";
+import { deleteCurrentUser, deleteCurrentUserStorage } from "../firebaseModel";
 import { loggedIn } from "../logedIn";
 import { signOutCurrentUser } from "../firebaseModel";
 import { useRouter } from "vue-router";
@@ -25,6 +25,7 @@ export default {
     const router = useRouter();
     const deleteAccount = async () => {
       deleteCurrentUser();
+      deleteCurrentUserStorage()
       auth
         .signOut()
         .then(() => {
@@ -63,7 +64,7 @@ export default {
   margin-right: auto;
   margin-left: auto;
   display: grid;
-  grid-template-columns: 30% auto;
+  grid-template-columns: 20% auto;
   grid-template-rows: auto;
   grid-template-areas:
     "imgDiv buttons";

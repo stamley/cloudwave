@@ -18,12 +18,7 @@ export default {
       selectedInstrument: "Piano",
       instrumentOptions: [
         "Piano",
-        "Guitar",
-        "Flute",
-        "Drums",
-        "SawtoothSynth",
-        "Violin",
-        "SinewaveSynth",
+        "Drums"
       ],
     };
   },
@@ -32,6 +27,7 @@ export default {
     updateSelectedIndex() {
       const index = this.instrumentOptions.indexOf(this.selectedInstrument) + 1;
       setSelectedIndex(index);
+
       getSelectedIndex();
       // setIndexValue(index)
       updateUserData();
@@ -62,6 +58,7 @@ export default {
 .selectInstrument {
   color: rgb(55, 96, 211);
 }
+
 select {
   font-family: "Sporting", Helvetica;
   font-size: 12px;

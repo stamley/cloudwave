@@ -12,7 +12,7 @@
       <input type="Synth password" placeholder="Synth Password" class="SyPassBox" id="synthPass" />
 
       <button class="register" @click="registerUser">Register</button>
-      
+
     </div>
   </div>
   <div class="footer">
@@ -73,10 +73,11 @@ export default {
 </script>
 
 <style scoped>
-.link{
+.link {
   color: rgb(55, 96, 211);
 }
-.footer{
+
+.footer {
   width: 30%;
   margin-left: auto;
   margin-right: auto;
@@ -84,8 +85,9 @@ export default {
   font-family: "Sporting", Helvetica;
   font-size: 12px;
   border-color: rgb(55, 96, 211);
-  color:rgb(178, 197, 237);
+  color: rgb(178, 197, 237);
 }
+
 .container {
   display: grid;
   grid-template-columns: auto;
@@ -147,8 +149,11 @@ input {
 }
 
 input:focus {
-  outline: none; /* to remove the default focus outline */
-  border-color: rgb(55, 96, 211);; /* change the border color */
+  outline: none;
+  /* to remove the default focus outline */
+  border-color: rgb(55, 96, 211);
+  ;
+  /* change the border color */
 }
 
 /* Full name box */
@@ -165,6 +170,7 @@ input:focus {
 .nameBox {
   grid-area: nameBox;
 }
+
 .mailBox {
   grid-area: mailBox;
 }
@@ -198,5 +204,4 @@ button {
 .register {
   grid-area: register;
   margin-right: auto;
-}
-</style>
+}</style>
