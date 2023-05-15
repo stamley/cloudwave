@@ -2,7 +2,7 @@
   <div class="container">
     <footer>
       <h3>Copyright © {{ currentYear }} Group 2 . All rights reserved.</h3>
-      <h3>Stöööödd oss swish nummer : 0700310177</h3>
+
     </footer>
   </div>
 </template>
