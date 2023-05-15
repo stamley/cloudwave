@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="profile-actions">
-      <button @click="saveMusic">Save Music</button>
+
       <button @click="logout">Logout</button>
     </div>
   </div>

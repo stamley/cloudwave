@@ -7,9 +7,7 @@
                 </div>
             </div>
 
-            <div>
-                <button>Remove</button>
-            </div>
+
         </div>
     </div>
 </template>
